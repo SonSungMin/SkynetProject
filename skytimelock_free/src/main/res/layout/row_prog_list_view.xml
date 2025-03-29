@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+	
+    <LinearLayout 
+        android:id="@+id/row_app_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5D08A"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">	    
+    </LinearLayout>
+    
+    
+    <!-- 데이터가 없을 경우 보여줄 row -->
+        
+    <LinearLayout
+        android:id="@+id/layout_row_app"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/img_app_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/main_icon" />
+
+        </LinearLayout>
+        	
+        <LinearLayout
+            android:id="@+id/row_app_body"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:weightSum="100" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="50"
+                android:gravity="bottom"
+                android:weightSum="100" >
+
+		        <LinearLayout
+		            android:layout_width="0dp"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="100" >
+
+		            <TextView
+		                android:id="@+id/txt_app_name"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_marginLeft="5dp"
+		                android:singleLine="true"
+		                android:text="App Name"
+		                android:textSize="13sp" />
+
+		        </LinearLayout>
+
+		        <LinearLayout
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="10dp"
+		            android:orientation="vertical" >
+
+		            <TextView
+		                android:id="@+id/txt_run"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="Run : 7"
+		                android:textSize="12sp" />
+
+		        </LinearLayout>
+
+	        </LinearLayout>
+	        
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="0dp"
+	            android:layout_weight="50"
+	            android:gravity="bottom"
+	            android:orientation="horizontal" >
+
+	            <LinearLayout
+	                android:layout_width="0dp"
+	                android:layout_height="match_parent"
+	                android:layout_marginLeft="5dp"
+	                android:layout_weight="1"
+	                android:gravity="center_vertical"
+	                android:orientation="horizontal"
+	                android:weightSum="100" >
+
+	                <LinearLayout
+	                    android:layout_width="0dp"
+	                    android:layout_height="match_parent"
+	                    android:layout_weight="100"
+	                    android:gravity="center_vertical"
+	                    android:orientation="vertical"
+	                    android:weightSum="100" >
+
+	                    <LinearLayout
+	                        android:id="@+id/lay_prog_frame"
+	                        android:layout_width="fill_parent"
+	                        android:layout_height="wrap_content"
+	                        android:background="@drawable/linelayout_round_graph"
+	                        android:orientation="horizontal"
+	                        android:padding="2dp"
+	                        android:weightSum="100" >
+
+	                        <LinearLayout
+	                            android:id="@+id/lay_prog"
+	                            android:layout_width="0dp"
+	                            android:layout_height="12dp"
+	                            android:layout_weight="70"
+	                            android:background="@drawable/linelayout_round_graph_in"
+	                            android:orientation="horizontal" >
+	                        </LinearLayout>
+	                    </LinearLayout>
+
+	                </LinearLayout>
+
+	                <LinearLayout
+	                    android:layout_width="40dp"
+	                    android:layout_height="fill_parent"
+	                    android:layout_marginLeft="10dp"
+	                    android:gravity="center_vertical"
+	                    android:orientation="vertical" >
+
+	                    <TextView
+	                        android:id="@+id/txt_rate"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:layout_marginLeft="2dp"
+	                        android:text="100%"
+	                        android:textSize="12sp" />
+
+	                </LinearLayout>
+	            </LinearLayout>
+	            
+	            <LinearLayout
+	                android:id="@+id/layout_status"
+	                android:layout_width="wrap_content"
+	                android:layout_height="fill_parent"
+	                android:layout_marginLeft="10dp"
+	                android:layout_marginRight="10dp"
+	                android:gravity="center_vertical"
+	                android:orientation="horizontal" >
+
+		            <TextView
+		                android:id="@+id/txt_used_time"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:singleLine="true"
+		                android:text="01:10:20"
+		                android:textSize="12sp" />
+
+	            </LinearLayout>
+	           	
+	            <!-- 패키지명 참고용 -->
+	            <!-- 설정시간 참고용 -->
+	            <!-- 남은시간 참고용 -->
+	            
+			</LinearLayout>
+		</LinearLayout>		
+    </LinearLayout>
+    
+    <!-- Line #e5a25a-->
+    
+</LinearLayout>

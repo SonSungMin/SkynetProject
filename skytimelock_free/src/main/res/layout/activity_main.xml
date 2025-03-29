@@ -1,0 +1,2271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+        
+    <!-- Title -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:background="#ff6600"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal" >
+
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:orientation="vertical"
+	        android:text="@string/title_activity"
+	        android:textColor="#ffffff"
+	        android:textSize="18sp"
+	        android:textStyle="bold" />	
+		<!-- 
+		<Button 
+		    android:id="@+id/btn_start"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginRight="15dp"
+		    android:background="@drawable/tog_btn_start"/>
+		-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="5dp"
+        android:background="#bbbbbb" >
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
+        android:layout_weight="1"
+        android:background="#ffffff" >
+	
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            
+            
+            <ScrollView 
+                android:layout_width="fill_parent"
+			    android:layout_height="fill_parent">
+				<!-- ################### 환경 설정 ################### -->
+				<LinearLayout
+				    android:orientation="vertical"
+				    android:layout_width="fill_parent"
+				    android:layout_height="fill_parent"
+				    android:id="@+id/view_setting">
+				    
+				    
+				    
+				    
+				    <!-- ##################################### 
+			        	 ######## 기본 잠금 설정 title ############ 
+			             ##################################### -->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="30dp"
+					    android:layout_marginLeft="5dp"
+					    android:layout_marginRight="5dp"
+					    android:layout_marginTop="5dp"
+					    android:gravity="center_vertical"
+					    android:orientation="vertical" >
+
+					    <TextView
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:layout_marginBottom="5dp"
+					        android:layout_marginLeft="10dp"
+					        android:gravity="center"
+					        android:orientation="vertical"
+					        android:text="@string/txt_history_title"
+					        android:textColor="#ff6600"
+					        android:textSize="15sp"
+					        android:textStyle="bold" />
+
+					    <LinearLayout
+					        android:layout_width="fill_parent"
+					        android:layout_height="1dp"
+					        android:layout_marginBottom="5dp"
+					        android:background="#ff6600" >
+					    </LinearLayout>
+
+					</LinearLayout>
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:layout_marginBottom="10dp"
+					    android:layout_marginLeft="5dp"
+					    android:layout_marginRight="5dp"
+					    android:background="#ffffff"
+					    android:gravity="center_vertical"
+					    android:orientation="vertical"
+					    android:paddingBottom="5dp"
+					    android:paddingTop="5dp" >
+
+						<LinearLayout
+						    android:layout_width="match_parent"
+						    android:layout_height="wrap_content"
+						    android:layout_marginBottom="5dp"
+						    android:layout_marginTop="5dp" >
+
+						    <LinearLayout
+						        android:layout_width="wrap_content"
+						        android:layout_height="match_parent"
+						        android:layout_marginBottom="2dp"
+						        android:layout_marginLeft="20dp"
+						        android:layout_marginTop="2dp" >
+
+						        <TextView
+						            android:id="@+id/txt_hr"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginRight="5dp"
+						            android:text="01"
+						            android:textColor="#000000"
+						            android:textSize="25sp"
+						            android:textStyle="bold" />
+
+						        <TextView
+						            android:id="@+id/textView1"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginRight="5dp"
+						            android:text="hr"
+						            android:textSize="18sp" />
+
+						        <TextView
+						            android:id="@+id/txt_min"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginRight="5dp"
+						            android:text="22"
+						            android:textColor="#000000"
+						            android:textSize="25sp"
+						            android:textStyle="bold" />
+
+						        <TextView
+						            android:id="@+id/TextView01"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginRight="5dp"
+						            android:text="min"
+						            android:textSize="18sp" />
+
+						        <TextView
+						            android:id="@+id/txt_sec"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginRight="5dp"
+						            android:text="30"
+						            android:textColor="#000000"
+						            android:textSize="25sp"
+						            android:textStyle="bold" />
+
+						        <TextView
+						            android:id="@+id/TextView02"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginRight="5dp"
+						            android:text="sec"
+						            android:textSize="18sp" />
+						    </LinearLayout>
+
+						    <LinearLayout
+						        android:layout_width="0dp"
+						        android:layout_height="match_parent"
+						        android:layout_weight="1" >
+
+						    </LinearLayout>
+
+						    <Button
+						        android:id="@+id/btn_delete"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:layout_marginRight="10dp"
+						        android:background="@drawable/tog_btn_delete_small" />
+
+						    <Button
+						        android:id="@+id/btn_graph"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:layout_marginRight="10dp"
+						        android:background="@drawable/tog_btn_graph_mid" />
+						</LinearLayout>
+
+						<LinearLayout
+						    android:layout_width="fill_parent"
+						    android:layout_height="1dp"
+						    android:layout_marginBottom="5dp"
+						    android:layout_marginLeft="10dp"
+						    android:layout_marginRight="10dp"
+						    android:layout_marginTop="10dp"
+						    android:background="#eaeaea" >
+
+						</LinearLayout>
+
+						<LinearLayout
+						    android:layout_width="match_parent"
+						    android:layout_height="wrap_content"
+						    android:gravity="center_vertical" >
+
+							<TextView
+							    android:id="@+id/textView2"
+							    android:layout_width="wrap_content"
+							    android:layout_height="wrap_content"
+							    android:layout_marginLeft="15dp"
+							    android:text="> Top 3"
+							    android:textColor="#ff6600"
+							    android:textStyle="bold" />
+
+						</LinearLayout>
+
+						<LinearLayout
+						    android:layout_width="fill_parent"
+						    android:layout_height="1dp"
+						    android:layout_marginBottom="10dp"
+						    android:layout_marginLeft="10dp"
+						    android:layout_marginRight="10dp"
+						    android:layout_marginTop="5dp"
+						    android:background="#eaeaea" >
+						</LinearLayout>
+
+						<LinearLayout
+						    android:layout_width="match_parent"
+						    android:layout_height="wrap_content"
+						    android:orientation="vertical" >
+							<!-- Rank 1 -->
+
+							<LinearLayout
+							    android:id="@+id/lay_rank1"
+							    android:layout_width="match_parent"
+							    android:layout_height="wrap_content"
+							    android:layout_marginBottom="10dp"
+							    android:layout_marginLeft="20dp"
+							    android:gravity="center_vertical"
+							    android:orientation="horizontal"
+							    android:weightSum="1" >
+
+								<LinearLayout
+								    android:layout_width="0dp"
+								    android:layout_height="match_parent"
+								    android:layout_weight="0.3"
+								    android:gravity="center_vertical" >
+
+								    <TextView
+								        android:id="@+id/txt_rank1"
+								        android:layout_width="wrap_content"
+								        android:layout_height="wrap_content"
+								        android:layout_marginLeft="5dp"
+								        android:text="스마트 타임가이드"
+								        android:textSize="14sp" />
+								</LinearLayout>
+
+								<LinearLayout
+								    android:layout_width="0dp"
+								    android:layout_height="match_parent"
+								    android:layout_marginLeft="5dp"
+								    android:layout_weight="0.4"
+								    android:gravity="center_vertical"
+								    android:orientation="horizontal"
+								    android:weightSum="100" >
+
+								    <LinearLayout
+								        android:layout_width="0dp"
+								        android:layout_height="wrap_content"
+								        android:layout_weight="100"
+								        android:background="@drawable/linelayout_round_graph"
+								        android:gravity="center_vertical"
+								        android:padding="2dp"
+								        android:weightSum="100" >
+
+								        <LinearLayout
+								            android:id="@+id/lay_prog1"
+								            android:layout_width="0dp"
+								            android:layout_height="15dp"
+								            android:layout_weight="80"
+								            android:background="@drawable/linelayout_round_graph_in"
+								            android:orientation="horizontal" >
+								        </LinearLayout>
+
+								    </LinearLayout>
+
+								    <TextView
+								        android:id="@+id/txt_rate1"
+								        android:layout_width="wrap_content"
+								        android:layout_height="wrap_content"
+								        android:layout_marginLeft="2dp"
+								        android:layout_weight="80"
+								        android:text="80%"
+								        android:textSize="14sp" />
+
+								</LinearLayout>
+
+								<LinearLayout
+								    android:layout_width="0dp"
+								    android:layout_height="match_parent"
+								    android:layout_weight="0.3"
+								    android:gravity="center_vertical"
+								    android:orientation="vertical" >
+
+									<TextView
+									    android:id="@+id/txt_usedtime1"
+									    android:layout_width="wrap_content"
+									    android:layout_height="wrap_content"
+									    android:layout_marginLeft="5dp"
+									    android:text="01:10:20"
+									    android:textSize="14sp" />
+
+								</LinearLayout>
+							</LinearLayout>
+
+							<!-- Rank 2 -->
+
+							<LinearLayout
+							    android:id="@+id/lay_rank2"
+							    android:layout_width="match_parent"
+							    android:layout_height="wrap_content"
+							    android:layout_marginBottom="10dp"
+							    android:layout_marginLeft="20dp"
+							    android:gravity="center_vertical"
+							    android:orientation="horizontal"
+							    android:weightSum="1" >
+
+							    <LinearLayout
+							        android:layout_width="0dp"
+							        android:layout_height="match_parent"
+							        android:layout_weight="0.3"
+							        android:gravity="center_vertical" >
+
+							        <TextView
+							            android:id="@+id/txt_rank2"
+							            android:layout_width="wrap_content"
+							            android:layout_height="wrap_content"
+							            android:layout_marginLeft="5dp"
+							            android:text="런처"
+							            android:textSize="14sp" />
+							    </LinearLayout>
+
+							    <LinearLayout
+							        android:layout_width="0dp"
+							        android:layout_height="match_parent"
+							        android:layout_marginLeft="5dp"
+							        android:layout_weight="0.4"
+							        android:gravity="center_vertical"
+							        android:orientation="horizontal"
+							        android:weightSum="100" >
+
+							        <LinearLayout
+							            android:layout_width="0dp"
+							            android:layout_height="wrap_content"
+							            android:layout_weight="100"
+							            android:background="@drawable/linelayout_round_graph"
+							            android:gravity="center_vertical"
+							            android:padding="2dp"
+							            android:weightSum="100" >
+
+							            <LinearLayout
+							                android:id="@+id/lay_prog2"
+							                android:layout_width="0dp"
+							                android:layout_height="15dp"
+							                android:layout_weight="50"
+							                android:background="@drawable/linelayout_round_graph_in"
+							                android:orientation="horizontal" >
+							            </LinearLayout>
+							        </LinearLayout>
+
+							        <TextView
+							            android:id="@+id/txt_rate2"
+							            android:layout_width="wrap_content"
+							            android:layout_height="wrap_content"
+							            android:layout_marginLeft="2dp"
+							            android:layout_weight="80"
+							            android:text="50%"
+							            android:textSize="14sp" />
+
+							    </LinearLayout>
+
+							    <LinearLayout
+							        android:layout_width="0dp"
+							        android:layout_height="match_parent"
+							        android:layout_weight="0.3"
+							        android:gravity="center_vertical"
+							        android:orientation="vertical" >
+
+							        <TextView
+							            android:id="@+id/txt_usedtime2"
+							            android:layout_width="wrap_content"
+							            android:layout_height="wrap_content"
+							            android:layout_marginLeft="5dp"
+							            android:text="01:10:20"
+							            android:textSize="14sp" />
+							    </LinearLayout>
+							</LinearLayout>
+
+							<!-- Rank 3 -->
+
+							<LinearLayout
+							    android:id="@+id/lay_rank3"
+							    android:layout_width="match_parent"
+							    android:layout_height="wrap_content"
+							    android:layout_marginBottom="10dp"
+							    android:layout_marginLeft="20dp"
+							    android:gravity="center_vertical"
+							    android:orientation="horizontal"
+							    android:weightSum="1" >
+
+								<LinearLayout
+								    android:layout_width="0dp"
+								    android:layout_height="match_parent"
+								    android:layout_weight="0.3"
+								    android:gravity="center_vertical" >
+
+								    <TextView
+								        android:id="@+id/txt_rank3"
+								        android:layout_width="wrap_content"
+								        android:layout_height="wrap_content"
+								        android:layout_marginLeft="5dp"
+								        android:text="타임가이드"
+								        android:textSize="14sp" />
+								</LinearLayout>
+
+								<LinearLayout
+								    android:layout_width="0dp"
+								    android:layout_height="match_parent"
+								    android:layout_marginLeft="5dp"
+								    android:layout_weight="0.4"
+								    android:gravity="center_vertical"
+								    android:orientation="horizontal"
+								    android:weightSum="100" >
+
+								    <LinearLayout
+								        android:layout_width="0dp"
+								        android:layout_height="wrap_content"
+								        android:layout_weight="100"
+								        android:background="@drawable/linelayout_round_graph"
+								        android:gravity="center_vertical"
+								        android:padding="2dp"
+								        android:weightSum="100" >
+
+								        <LinearLayout
+								            android:id="@+id/lay_prog3"
+								            android:layout_width="0dp"
+								            android:layout_height="15dp"
+								            android:layout_weight="20"
+								            android:background="@drawable/linelayout_round_graph_in"
+								            android:orientation="horizontal" >
+								        </LinearLayout>
+								    </LinearLayout>
+
+								    <TextView
+								        android:id="@+id/txt_rate3"
+								        android:layout_width="wrap_content"
+								        android:layout_height="wrap_content"
+								        android:layout_marginLeft="2dp"
+								        android:layout_weight="80"
+								        android:text="20%"
+								        android:textSize="14sp" />
+
+								</LinearLayout>
+
+							    <LinearLayout
+							        android:layout_width="0dp"
+							        android:layout_height="match_parent"
+							        android:layout_weight="0.3"
+							        android:gravity="center_vertical"
+							        android:orientation="vertical" >
+
+							        <TextView
+							            android:id="@+id/txt_usedtime3"
+							            android:layout_width="wrap_content"
+							            android:layout_height="wrap_content"
+							            android:layout_marginLeft="5dp"
+							            android:text="01:10:20"
+							            android:textSize="14sp" />
+							    </LinearLayout>
+							</LinearLayout>
+
+						</LinearLayout>
+
+					</LinearLayout>
+
+					<LinearLayout
+					    android:layout_width="match_parent"
+					    android:layout_height="wrap_content" >
+					</LinearLayout>
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="30dp"
+					    android:layout_marginLeft="5dp"
+					    android:layout_marginRight="5dp"
+					    android:layout_marginTop="5dp"
+					    android:gravity="center_vertical"
+					    android:orientation="vertical" >
+
+						<TextView
+						    android:layout_width="wrap_content"
+						    android:layout_height="wrap_content"
+						    android:layout_marginBottom="5dp"
+						    android:layout_marginLeft="10dp"
+						    android:gravity="center"
+						    android:orientation="vertical"
+						    android:text="@string/option_title2"
+						    android:textColor="#ff6600"
+						    android:textSize="15sp"
+						    android:textStyle="bold" />
+
+						<LinearLayout
+						    android:layout_width="fill_parent"
+						    android:layout_height="1dp"
+						    android:layout_marginBottom="5dp"
+						    android:background="#ff6600" >
+						</LinearLayout>
+
+					</LinearLayout>							
+					<!-- ###################################################### 잠금 활성화 -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center_vertical"
+				        android:orientation="horizontal" >	
+
+				        <CheckBox
+				            android:id="@+id/chk_option4"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/option_enable_title"
+				            android:textSize="15sp"
+				            android:textStyle="bold" />
+
+				    </LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginRight="10dp"
+				        android:layout_marginBottom="10dp"
+				        android:layout_marginLeft="10dp"
+				        android:orientation="horizontal" >	
+
+				        <TextView
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/option_enable_desc"
+				            android:textColor="#000000"
+				            android:textSize="14sp" />
+					        
+				    </LinearLayout>
+				    <!-- 구분선 -->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:background="#eaeaea" />
+					
+				    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 잠금방법 설정 -->
+				    <LinearLayout
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal"
+				        android:gravity="center_vertical|center_horizontal">
+				        <LinearLayout
+				            android:layout_width="0dp"
+				            android:layout_weight="1"
+				            android:layout_height="wrap_content"
+				            android:orientation="vertical"
+				            android:gravity="center_vertical" >	
+
+					        <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginLeft="20dp"
+					            android:layout_marginTop="5dp"
+					            android:orientation="vertical"
+					            android:text="@string/txt_lock_method"
+					            android:textColor="#000000"
+					            android:textSize="15sp"
+					            android:textStyle="bold" />
+
+					    </LinearLayout>
+					</LinearLayout>
+				    <RadioGroup
+				        android:id="@+id/rdo_group_lock_method"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:layout_marginLeft="20dp"
+				        android:orientation="horizontal" >
+
+				        <RadioButton
+				            android:id="@+id/rdo_lock_method1"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:checked="true"
+				            android:text="@string/rdo_lock_method1"
+				            android:textSize="14sp" />
+
+				        <RadioButton
+				            android:id="@+id/rdo_lock_method2"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="10dp"
+				            android:text="@string/rdo_lock_method2"
+				            android:textSize="14sp" />
+
+				    </RadioGroup>
+				    <!-- 설명 -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginLeft="20dp"
+				        android:layout_marginRight="20dp"
+				        android:layout_marginBottom="10dp"
+				        android:gravity="center_vertical|center_horizontal"
+				        android:orientation="horizontal" >						    
+				        <LinearLayout 
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1">	
+						    <TextView
+						        android:id="@+id/txt_common_desc"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:layout_marginLeft="10dp"
+						        android:singleLine="false"
+						        android:text="@string/rdo_lock_method1_desc"
+						        android:textColor="#000000"
+						        android:textSize="14sp" />	
+					    </LinearLayout>
+				    </LinearLayout>
+					<!-- 구분선 
+					<LinearLayout 
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:layout_marginTop="5dp"
+					    android:layout_marginBottom="15dp"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:background="#ff6600"/>
+				    -->
+					
+					<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 잠금 방법 세부 설정 -->
+				    <LinearLayout
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal"
+				        android:gravity="center_vertical|center_horizontal">
+				        <LinearLayout
+				            android:layout_width="0dp"
+				            android:layout_weight="1"
+				            android:layout_height="wrap_content"
+				            android:orientation="vertical"
+				            android:gravity="center_vertical" >	
+
+					        <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginLeft="20dp"
+					            android:layout_marginTop="5dp"
+					            android:orientation="vertical"
+					            android:text="@string/txt_lock_period"
+					            android:textColor="#000000"
+					            android:textSize="15sp"
+					            android:textStyle="bold" />
+
+					    </LinearLayout>
+					</LinearLayout>						    
+
+				    <LinearLayout
+				        android:id="@+id/layout_period"
+				        android:layout_width="fill_parent"
+				        android:layout_height="fill_parent"
+				        android:layout_marginBottom="5dp"
+				        android:layout_marginLeft="20dp"
+				        android:layout_marginRight="20dp"
+				        android:background="#ffffff"
+				        android:gravity="center_vertical|center_horizontal"
+				        android:orientation="vertical" >
+
+				        <LinearLayout
+				            android:layout_width="fill_parent"
+				            android:layout_height="wrap_content"
+				            android:layout_margin="5dp"
+				            android:gravity="center_vertical"
+				            android:orientation="vertical" >
+
+					        <LinearLayout
+					            android:layout_width="fill_parent"
+					            android:layout_height="wrap_content"
+					            android:layout_margin="5dp"
+					            android:gravity="center_vertical"
+					            android:orientation="horizontal" >
+
+						        <TextView
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginLeft="5dp"
+						            android:text="@string/txt_setting_dayofweek"
+						            android:textColor="#000000"
+						            android:textSize="15sp"
+						            android:textStyle="bold" />
+
+					        </LinearLayout>
+
+					        <LinearLayout
+					            android:layout_width="fill_parent"
+					            android:layout_height="1dp"
+					            android:layout_marginBottom="5dp"
+					            android:layout_marginLeft="10dp"
+					            android:layout_marginRight="10dp"
+					            android:layout_weight="1"
+					            android:background="#eaeaea" >
+					        </LinearLayout>
+
+				        </LinearLayout>
+					    <!-- $$$$$$$$$$$$$$$$ 요일 $$$$$$$$$$$$$$$ -->							    
+
+					    <LinearLayout
+					        android:layout_width="fill_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_marginBottom="5dp"
+					        android:layout_marginTop="2dp"
+					        android:gravity="center_vertical|center_horizontal" >
+					        
+					        <ToggleButton
+					            android:id="@+id/togbtn_sun"
+					            android:layout_width="40dp"
+					            android:layout_height="wrap_content"
+					            android:textColor="#ff0000"
+					            android:textStyle="bold"
+					            android:textOn="@string/txt_sun"
+					            android:textOff="@string/txt_sun"/>		
+					        <ToggleButton
+					            android:id="@+id/togbtn_mon"
+					            android:layout_width="40dp"
+					            android:layout_height="wrap_content"
+					            android:textStyle="bold"
+					            android:textOn="@string/txt_mon"
+					            android:textOff="@string/txt_mon"/>
+					        <ToggleButton
+					            android:id="@+id/togbtn_tue"
+					            android:layout_width="40dp"
+					            android:layout_height="wrap_content"
+					            android:textStyle="bold"
+					            android:textOn="@string/txt_tue"
+					            android:textOff="@string/txt_tue"/>
+					        <ToggleButton
+					            android:id="@+id/togbtn_wed"
+					            android:layout_width="40dp"
+					            android:layout_height="wrap_content"
+					            android:textStyle="bold"
+					            android:textOn="@string/txt_wed"
+					            android:textOff="@string/txt_wed"/>
+					        <ToggleButton
+					            android:id="@+id/togbtn_thu"
+					            android:layout_width="40dp"
+					            android:layout_height="wrap_content"
+					            android:textOn="@string/txt_thu"
+					            android:textOff="@string/txt_thu"/>
+					        <ToggleButton
+					            android:id="@+id/togbtn_fri"
+					            android:layout_width="40dp"
+					            android:layout_height="wrap_content"
+					            android:textStyle="bold"
+					            android:textOn="@string/txt_fri"
+					            android:textOff="@string/txt_fri"/>
+					        <ToggleButton
+					            android:id="@+id/togbtn_sat"
+					            android:layout_width="40dp"
+					            android:layout_height="wrap_content"
+					            android:textColor="#0000ff"
+					            android:textStyle="bold"
+					            android:textOn="@string/txt_sat"
+					            android:textOff="@string/txt_sat"/>
+					    </LinearLayout>
+				    </LinearLayout>
+				    
+					
+					<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 제한 시간 설정 -->
+
+				    <LinearLayout
+				        android:id="@+id/lay_activity"
+				        android:layout_width="fill_parent"
+				        android:layout_height="fill_parent"
+				        android:layout_marginBottom="10dp"
+				        android:layout_marginLeft="20dp"
+				        android:layout_marginRight="20dp"
+				        android:layout_marginTop="10dp"
+				        android:background="@drawable/linelayout_round_alp50"
+				        android:gravity="center_vertical"
+				        android:orientation="vertical" >
+					    
+				        <LinearLayout 
+				            android:layout_width="fill_parent"
+						    android:layout_height="wrap_content"
+						    android:layout_margin="5dp"
+						    android:gravity="center_vertical"
+						    android:orientation="horizontal">
+					        <LinearLayout
+						        android:layout_width="0dp"
+						        android:layout_weight="1"
+						        android:layout_height="wrap_content"
+						        android:layout_marginLeft="5dp"
+						        android:layout_marginRight="15dp"
+						        android:gravity="center_vertical" >
+
+						        <TextView
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginLeft="5dp"
+						            android:text="@string/txt_setting_activity"
+						            android:textColor="#000000"
+						            android:textSize="15sp"
+						            android:textStyle="bold" />
+
+						    </LinearLayout>
+							<LinearLayout
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:gravity="center_vertical|center_horizontal" >							    
+							    <Button
+							        android:id="@+id/btn_prior_setting"
+							        android:layout_marginLeft="10dp"
+							        android:layout_marginRight="20dp"
+							        android:layout_marginTop="5dp"
+							        android:layout_marginBottom="5dp"
+							        android:layout_width="wrap_content"
+							        android:layout_height="wrap_content"
+							        android:background="@drawable/tog_btn_setting_mid_red"/>							    
+						    </LinearLayout>
+				        </LinearLayout>
+				    </LinearLayout>
+				    <!-- 설명 -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginLeft="20dp"
+				        android:layout_marginRight="20dp"
+				        android:layout_marginBottom="10dp"
+				        android:gravity="center_vertical|center_horizontal"
+				        android:orientation="horizontal" >						    
+				        <LinearLayout 
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1">	
+
+						    <TextView
+						        android:id="@+id/txt_lock_method_desc"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:layout_marginLeft="10dp"
+						        android:singleLine="false"
+						        android:text="@string/rdo_lock_method2_desc"
+						        android:textColor="#000000"
+						        android:textSize="14sp" />
+	
+					    </LinearLayout>
+				    </LinearLayout>
+				    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 항상 허용 가능 어플 설정 -->
+				    <LinearLayout 
+				        android:id="@+id/lay_allow_app"
+				        android:layout_width="fill_parent"
+					    android:layout_height="fill_parent"
+					    android:orientation="vertical"
+					    android:gravity="center_vertical" 
+				        android:layout_marginLeft="20dp"
+				        android:layout_marginRight="20dp"
+				        android:layout_marginBottom="10dp"
+				        android:background="@drawable/linelayout_round_alp50">
+					    
+				        <LinearLayout 
+				            android:layout_width="fill_parent"
+						    android:layout_height="wrap_content"
+						    android:layout_margin="5dp"
+						    android:gravity="center_vertical"
+						    android:orientation="horizontal">
+					        <LinearLayout
+						        android:layout_width="0dp"
+						        android:layout_weight="1"
+						        android:layout_height="wrap_content"
+						        android:layout_marginLeft="5dp"
+						        android:layout_marginRight="15dp"
+						        android:gravity="center_vertical" >
+
+						        <TextView
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginLeft="5dp"
+						            android:text="@string/txt_allways_able"
+						            android:textColor="#000000"
+						            android:textSize="15sp"
+						            android:textStyle="bold" />
+
+						    </LinearLayout>
+							<LinearLayout
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:gravity="center_vertical|center_horizontal" >							    
+							    <Button
+							        android:id="@+id/btn_lock_setting"
+							        android:layout_marginLeft="10dp"
+							        android:layout_marginRight="20dp"
+							        android:layout_marginTop="5dp"
+							        android:layout_marginBottom="5dp"
+							        android:layout_width="wrap_content"
+							        android:layout_height="wrap_content"
+							        android:background="@drawable/tog_btn_setting_mid_red"/>							    
+						    </LinearLayout>
+				        </LinearLayout>
+				    </LinearLayout>
+				    <!-- 설명 -->
+				    <LinearLayout
+				        android:id="@+id/activity_desc"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        android:layout_marginLeft="20dp"
+				        android:gravity="center_vertical|center_horizontal"
+				        android:orientation="horizontal" >						    
+				        <LinearLayout 
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1">	
+
+						    <TextView
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:layout_marginLeft="10dp"
+						        android:singleLine="false"
+						        android:text="@string/txt_allways_able_desc"
+						        android:textColor="#000000"
+						        android:textSize="14sp" />
+	
+					    </LinearLayout>
+				    </LinearLayout>
+				    
+				    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 시간제한 어플 설정 -->
+				    <LinearLayout 
+				        android:id="@+id/lay_time_activity"
+				        android:layout_width="fill_parent"
+					    android:layout_height="fill_parent"
+					    android:orientation="vertical"
+					    android:gravity="center_vertical" 
+				        android:layout_marginLeft="20dp"
+				        android:layout_marginRight="20dp"
+				        android:layout_marginBottom="10dp"
+				        android:layout_marginTop="10dp"
+				        android:background="@drawable/linelayout_round_alp50">
+					    
+				        <LinearLayout 
+				            android:layout_width="fill_parent"
+						    android:layout_height="wrap_content"
+						    android:layout_margin="5dp"
+						    android:gravity="center_vertical"
+						    android:orientation="horizontal">
+					        <LinearLayout
+						        android:layout_width="0dp"
+						        android:layout_weight="1"
+						        android:layout_height="wrap_content"
+						        android:layout_marginLeft="5dp"
+						        android:layout_marginRight="15dp"
+						        android:gravity="center_vertical" >
+
+						        <TextView
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginLeft="5dp"
+						            android:text="@string/title_timelock"
+						            android:textColor="#000000"
+						            android:textSize="15sp"
+						            android:textStyle="bold" />
+
+						    </LinearLayout>
+							<LinearLayout
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:gravity="center_vertical|center_horizontal" >							    
+							    <Button
+							        android:id="@+id/btn_daily_setting"
+							        android:layout_marginLeft="10dp"
+							        android:layout_marginRight="20dp"
+							        android:layout_marginTop="5dp"
+							        android:layout_marginBottom="5dp"
+							        android:layout_width="wrap_content"
+							        android:layout_height="wrap_content"
+							        android:background="@drawable/tog_btn_setting_mid_red"/>							    
+						    </LinearLayout>
+				        </LinearLayout>
+				    </LinearLayout>
+				    <!-- 설명 -->
+				    <LinearLayout
+				        android:id="@+id/lay_time_desc"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginLeft="20dp"
+				        android:layout_marginRight="20dp"
+				        android:layout_marginBottom="10dp"
+				        android:gravity="center_vertical|center_horizontal"
+				        android:orientation="horizontal" >						    
+				        <LinearLayout 
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1">	
+
+						    <TextView
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:layout_marginLeft="10dp"
+						        android:singleLine="false"
+						        android:text="@string/txt_setting_time_activity_desc"
+						        android:textColor="#000000"
+						        android:textSize="14sp" />
+	
+					    </LinearLayout>
+				    </LinearLayout>
+				    
+				    
+					<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 잠금 어플 설정 -->
+				    <LinearLayout 
+				        android:id="@+id/lay_lock_activity"
+				        android:layout_width="fill_parent"
+					    android:layout_height="fill_parent"
+					    android:orientation="vertical"
+					    android:gravity="center_vertical" 
+				        android:layout_marginLeft="20dp"
+				        android:layout_marginRight="20dp"
+				        android:layout_marginBottom="10dp"
+				        android:layout_marginTop="10dp"
+				        android:background="@drawable/linelayout_round_alp50">
+					    
+				        <LinearLayout 
+				            android:layout_width="fill_parent"
+						    android:layout_height="wrap_content"
+						    android:layout_margin="5dp"
+						    android:gravity="center_vertical"
+						    android:orientation="horizontal">
+					        <LinearLayout
+						        android:layout_width="0dp"
+						        android:layout_weight="1"
+						        android:layout_height="wrap_content"
+						        android:layout_marginLeft="5dp"
+						        android:layout_marginRight="15dp"
+						        android:gravity="center_vertical" >
+
+						        <TextView
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginLeft="5dp"
+						            android:text="@string/txt_setting_lock_activity"
+						            android:textColor="#000000"
+						            android:textSize="15sp"
+						            android:textStyle="bold" />
+
+						    </LinearLayout>
+							<LinearLayout
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:gravity="center_vertical|center_horizontal" >							    
+							    <Button
+							        android:id="@+id/btn_lock_app_setting"
+							        android:layout_marginLeft="10dp"
+							        android:layout_marginRight="20dp"
+							        android:layout_marginTop="5dp"
+							        android:layout_marginBottom="5dp"
+							        android:layout_width="wrap_content"
+							        android:layout_height="wrap_content"
+							        android:background="@drawable/tog_btn_setting_mid_red"/>							    
+						    </LinearLayout>
+				        </LinearLayout>
+				    </LinearLayout>
+				    <!-- 설명 -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginLeft="20dp"
+				        android:layout_marginRight="20dp"
+				        android:layout_marginBottom="10dp"
+				        android:gravity="center_vertical|center_horizontal"
+				        android:orientation="horizontal" >						    
+				        <LinearLayout 
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1">	
+
+						    <TextView
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:layout_marginLeft="10dp"
+						        android:singleLine="false"
+						        android:text="@string/txt_setting_lock_activity_desc"
+						        android:textColor="#000000"
+						        android:textSize="14sp" />
+	
+					    </LinearLayout>
+				    </LinearLayout>
+					
+					
+					<!-- 구분선 -->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:layout_marginBottom="15dp"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:layout_marginTop="5dp"
+					    android:background="#eaeaea" />
+
+					<!-- ###################################################### 잠금화면 설정 -->
+				    <LinearLayout
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal"
+				        android:gravity="center_vertical|center_horizontal">							    
+
+				        <LinearLayout
+				            android:layout_width="0dp"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="10dp"
+				            android:layout_marginRight="10dp"
+				            android:layout_weight="1"
+				            android:gravity="center_vertical"
+				            android:orientation="horizontal" >
+
+					        <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginLeft="20dp"
+					            android:orientation="vertical"
+					            android:text="@string/txt_lock_view"
+					            android:textColor="#000000"
+					            android:textSize="15sp"
+					            android:textStyle="bold" />
+
+					    </LinearLayout>
+					</LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal"
+				        android:gravity="center_vertical|center_horizontal">
+				        <LinearLayout
+				            android:layout_width="0dp"
+				            android:layout_weight="1"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical|center_horizontal" >
+						    <RadioGroup
+						        android:id="@+id/rdo_group_method"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:layout_marginLeft="10dp"
+						        android:gravity="center_horizontal"
+						        android:orientation="horizontal" >
+
+						        <RadioButton
+						            android:id="@+id/rdo_method1"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginLeft="10dp"
+						            android:checked="true"
+						            android:text="@string/rdo_method1"
+						            android:textSize="15sp" />
+
+						        <RadioButton
+						            android:id="@+id/rdo_method2"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:text="@string/rdo_method2"
+						            android:textSize="15sp" />
+
+						        <RadioButton
+						            android:id="@+id/rdo_method3"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginLeft="30dp"
+						            android:text="@string/rdo_method3"
+						            android:textSize="15sp" />
+
+						    </RadioGroup>
+					    </LinearLayout>
+					    <LinearLayout
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical|center_horizontal" >							    
+						    <Button
+						        android:id="@+id/btn_setting"
+						        android:layout_marginLeft="10dp"
+						        android:layout_marginRight="20dp"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:background="@drawable/tog_btn_setting_mid_red"/>							    
+					    </LinearLayout>
+					</LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        android:gravity="center_vertical|center_horizontal"
+				        android:orientation="horizontal" >						    
+
+				        <LinearLayout
+				            android:layout_width="0dp"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="10dp"
+				            android:layout_marginRight="10dp"
+				            android:layout_weight="1" >
+
+						    <TextView
+						        android:id="@+id/txt_method_desc"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:layout_marginLeft="20dp"
+						        android:singleLine="false"
+						        android:text="@string/method1"
+						        android:textColor="#000000"
+						        android:textSize="14sp" />
+	
+					    </LinearLayout>
+				    </LinearLayout>
+
+					
+					
+				    
+				    
+				    <!--############################## 
+				    	######### 스마트폰 건강 기능 ####### 
+				        ##############################-->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="30dp"
+					    android:layout_marginLeft="5dp"
+					    android:layout_marginRight="5dp"
+					    android:layout_marginTop="30dp"
+					    android:gravity="center_vertical"
+					    android:orientation="vertical" >
+
+						<TextView
+						    android:layout_width="wrap_content"
+						    android:layout_height="fill_parent"
+						    android:layout_marginBottom="5dp"
+						    android:layout_marginLeft="10dp"
+						    android:gravity="center"
+						    android:orientation="vertical"
+						    android:text="@string/txt_title_health"
+						    android:textColor="#ff6600"
+						    android:textSize="15sp"
+						    android:textStyle="bold" />
+
+						<LinearLayout
+						    android:layout_width="fill_parent"
+						    android:layout_height="2dp"
+						    android:background="#ff6600"
+						    android:orientation="vertical" >
+
+						</LinearLayout>
+
+					</LinearLayout>	
+				    <!-- ###################################################### 블루 라이트 필터 -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginTop="5dp"
+				        android:orientation="horizontal"
+				        android:gravity="center_vertical|center_horizontal">							    
+				        <LinearLayout
+				            android:layout_width="0dp"
+				            android:layout_weight="1"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical" >	
+
+					        <CheckBox
+					            android:id="@+id/chk_option6"
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginBottom="10dp"
+					            android:layout_marginLeft="20dp"
+					            android:layout_marginTop="10dp"
+					            android:orientation="vertical"
+					            android:text="@string/txt_health_bluelight"
+					            android:textColor="#000000"
+					            android:textSize="15sp"
+					            android:textStyle="bold" />
+
+					    </LinearLayout>							    
+					    <LinearLayout
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical|center_horizontal" >							    
+						    <Button
+						        android:id="@+id/btn_setting_bluelight"
+						        android:layout_marginLeft="10dp"
+						        android:layout_marginRight="20dp"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:background="@drawable/tog_btn_setting_mid_red"/>							    
+					    </LinearLayout>
+					</LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="10dp"
+				        android:gravity="center_vertical|center_horizontal"
+				        android:orientation="horizontal" >
+				        <LinearLayout 
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1">	
+
+					        <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginLeft="20dp"
+					            android:text="@string/txt_health_bluelight_desc"
+					            android:textColor="#000000"
+					            android:textSize="14sp" />
+
+					    </LinearLayout>
+				    </LinearLayout>
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    <!--############################## 
+				    	######### 원격 설정 title ####### 
+				        ##############################-->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="30dp"
+					    android:layout_marginLeft="5dp"
+					    android:layout_marginRight="5dp"
+					    android:layout_marginTop="30dp"
+					    android:gravity="center_vertical"
+					    android:orientation="vertical" >
+
+						<TextView
+						    android:layout_width="wrap_content"
+						    android:layout_height="fill_parent"
+						    android:layout_marginBottom="5dp"
+						    android:layout_marginLeft="10dp"
+						    android:gravity="center"
+						    android:orientation="vertical"
+						    android:text="@string/txt_remote_setting"
+						    android:textColor="#ff6600"
+						    android:textSize="15sp"
+						    android:textStyle="bold" />
+
+						<LinearLayout
+						    android:layout_width="fill_parent"
+						    android:layout_height="2dp"
+						    android:background="#ff6600"
+						    android:orientation="vertical" >
+
+						</LinearLayout>
+
+					</LinearLayout>	
+				    <!-- ###################################################### SMS 잠금 설정 -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginTop="10dp"
+				        android:orientation="horizontal"
+				        android:gravity="center_vertical|center_horizontal">							    
+				        <LinearLayout
+				            android:layout_width="0dp"
+				            android:layout_weight="1"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical" >	
+
+					        <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginBottom="10dp"
+					            android:layout_marginLeft="20dp"
+					            android:layout_marginTop="10dp"
+					            android:orientation="vertical"
+					            android:text="@string/option_remote_title"
+					            android:textColor="#000000"
+					            android:textSize="15sp"
+					            android:textStyle="bold" />
+
+					    </LinearLayout>							    
+					    <LinearLayout
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical|center_horizontal" >							    
+						    <Button
+						        android:id="@+id/btn_setting_remote"
+						        android:layout_marginLeft="10dp"
+						        android:layout_marginRight="20dp"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:background="@drawable/tog_btn_setting_mid_red"/>							    
+					    </LinearLayout>
+					</LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="10dp"
+				        android:gravity="center_vertical|center_horizontal"
+				        android:orientation="horizontal" >						    
+				        <LinearLayout 
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1">	
+
+					        <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginLeft="20dp"
+					            android:text="@string/option_remote_desc"
+					            android:textColor="#000000"
+					            android:textSize="14sp" />
+
+					    </LinearLayout>
+				    </LinearLayout>
+				    <!-- 구분선 -->
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:background="#eaeaea" />
+
+				    <!-- ###################################################### SMS 잠금 해제 설정 -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginTop="10dp"
+				        android:orientation="horizontal"
+				        android:gravity="center_vertical|center_horizontal">							    
+				        <LinearLayout
+				            android:layout_width="0dp"
+				            android:layout_weight="1"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical" >	
+
+					        <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginBottom="10dp"
+					            android:layout_marginLeft="20dp"
+					            android:layout_marginTop="10dp"
+					            android:orientation="vertical"
+					            android:text="@string/option_remote_unlock_title"
+					            android:textColor="#000000"
+					            android:textSize="15sp"
+					            android:textStyle="bold" />
+
+					    </LinearLayout>							    
+					    <LinearLayout
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical|center_horizontal" >							    
+						    <Button
+						        android:id="@+id/btn_setting_remote_unlock"
+						        android:layout_marginLeft="10dp"
+						        android:layout_marginRight="20dp"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:background="@drawable/tog_btn_setting_mid_red"/>							    
+					    </LinearLayout>
+					</LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="10dp"
+				        android:gravity="center_vertical|center_horizontal"
+				        android:orientation="horizontal" >						    
+				        <LinearLayout 
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1">	
+
+					        <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginLeft="20dp"
+					            android:text="@string/option_remote_unlock_desc"
+					            android:textColor="#000000"
+					            android:textSize="14sp" />
+
+					    </LinearLayout>
+				    </LinearLayout>
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    <!--############################## 
+				    	######### 배경 설정 title ####### 
+				        ##############################-->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="30dp"
+					    android:layout_marginLeft="5dp"
+					    android:layout_marginRight="5dp"
+					    android:layout_marginTop="30dp"
+					    android:gravity="center_vertical"
+					    android:orientation="vertical" >
+						
+						<TextView
+						    android:layout_width="wrap_content"
+						    android:layout_height="fill_parent"
+						    android:layout_marginLeft="10dp"
+						    android:gravity="center"
+						    android:orientation="vertical"
+						    android:text="@string/option_title1"
+						    android:textColor="#ff6600"
+						    android:textSize="15sp"
+						    android:textStyle="bold" />
+
+						<LinearLayout
+						    android:layout_width="fill_parent"
+						    android:layout_height="1dp"
+						    android:layout_marginBottom="5dp"
+						    android:background="#ff6600" >
+						</LinearLayout>
+
+					</LinearLayout>	
+				    <!-- ###################################################### 배경화면 설정 -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginTop="10dp"
+				        android:orientation="horizontal"
+				        android:gravity="center_vertical|center_horizontal">							    
+				        <LinearLayout
+				            android:layout_width="0dp"
+				            android:layout_weight="1"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical" >	
+
+					        <TextView
+					            android:id="@+id/chk_option8"
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginBottom="10dp"
+					            android:layout_marginLeft="20dp"
+					            android:layout_marginTop="10dp"
+					            android:orientation="vertical"
+					            android:text="@string/option_back_image_title"
+					            android:textColor="#000000"
+					            android:textSize="15sp"
+					            android:textStyle="bold" />
+
+					    </LinearLayout>							    
+					    <LinearLayout
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical|center_horizontal" >							    
+						    <Button
+						        android:id="@+id/btn_setting_bg"
+						        android:layout_marginLeft="10dp"
+						        android:layout_marginRight="20dp"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:background="@drawable/tog_btn_setting_mid_red"/>							    
+					    </LinearLayout>
+					</LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="10dp"
+				        android:gravity="center_vertical|center_horizontal"
+				        android:orientation="horizontal" >						    
+				        <LinearLayout 
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1">	
+
+					        <TextView
+					            android:id="@+id/chk_option8_desc"
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginLeft="20dp"
+					            android:text="@string/option_back_image_desc"
+					            android:textColor="#000000"
+					            android:textSize="14sp" />
+	
+					    </LinearLayout>
+				    </LinearLayout>
+				    <!-- 구분선 -->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:background="#eaeaea" />
+
+					<!-- #################################################### 무작위 배경 화면 title -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center_vertical"
+				        android:orientation="horizontal" >	
+
+				        <CheckBox
+				            android:id="@+id/chk_option3"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/option_randombg_title"
+				            android:textColor="#000000"
+				            android:textSize="15sp"
+				            android:textStyle="bold" />
+	        
+				    </LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginRight="10dp"
+				        android:layout_marginBottom="15dp"
+				        android:layout_marginLeft="10dp"
+				        android:orientation="horizontal" >	
+
+				        <TextView
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/option_randombg_desc"
+				            android:textColor="#000000"
+				            android:textSize="14sp" />
+					        
+				    </LinearLayout>
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    <!-- ##########################
+				         ####### 옵션 title #########
+				         ##########################-->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="30dp"
+					    android:layout_marginLeft="5dp"
+					    android:layout_marginRight="5dp"
+					    android:layout_marginTop="30dp"
+					    android:gravity="center_vertical"
+					    android:orientation="vertical" >
+					
+						<TextView
+						    android:layout_width="wrap_content"
+						    android:layout_height="fill_parent"
+						    android:layout_marginBottom="5dp"
+						    android:layout_marginLeft="10dp"
+						    android:gravity="center"
+						    android:orientation="vertical"
+						    android:text="@string/option_title3"
+						    android:textColor="#ff6600"
+						    android:textSize="15sp"
+						    android:textStyle="bold" />
+
+						<LinearLayout
+						    android:layout_width="fill_parent"
+						    android:layout_height="1dp"
+						    android:layout_marginBottom="5dp"
+						    android:background="#ff6600" >
+						</LinearLayout>
+
+					</LinearLayout>
+					<!-- ###################################################### 스마트 타임가이드 데몬 설치 title -->
+				    <!--  
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center_vertical"
+				        android:orientation="horizontal"
+				        android:gravity="center_vertical" >	
+				        <CheckBox
+				            android:id="@+id/chk_option6"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="10dp"
+				            android:textColor="#000000"
+				            android:textSize="18sp"
+				            android:textStyle="bold"
+				            android:text="@string/option_demon_title" />
+				    </LinearLayout>
+				    -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginTop="10dp"
+				        android:orientation="horizontal"
+				        android:gravity="center_vertical|center_horizontal">							    
+
+				        <LinearLayout
+				            android:layout_width="0dp"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:gravity="center_vertical" >
+
+					        <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginLeft="20dp"
+					            android:orientation="vertical"
+					            android:text="@string/option_demon_title"
+					            android:textColor="#000000"
+					            android:textSize="15sp"
+					            android:textStyle="bold" />
+
+					    </LinearLayout>							    
+					    <LinearLayout
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical|center_horizontal" >							    
+						    <Button
+						        android:id="@+id/btn_install_demon"
+						        android:layout_marginLeft="10dp"
+						        android:layout_marginRight="20dp"
+						        android:layout_marginBottom="10dp"
+						        android:layout_marginTop="3dp"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:background="@drawable/tog_btn_install_demon"/>								    
+					    </LinearLayout>
+					</LinearLayout>
+				    
+				    
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginRight="10dp"
+				        android:layout_marginBottom="10dp"
+				        android:layout_marginLeft="10dp"
+				        android:orientation="horizontal" >	
+
+				        <TextView
+				            android:id="@+id/chk_option6_desc"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/option_demon_desc"
+				            android:textColor="#000000"
+				            android:textSize="14sp" />
+					        
+				    </LinearLayout>
+				    <!-- 구분선 -->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:background="#eaeaea" />
+					
+					<!-- ###################################################### 설정 화면 잠금 title -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center_vertical"
+				        android:orientation="horizontal" >	
+
+				        <CheckBox
+				            android:id="@+id/chk_option2"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/chk_option2_title"
+				            android:textColor="#000000"
+				            android:textSize="15sp"
+				            android:textStyle="bold" />
+					        
+				    </LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginRight="10dp"
+				        android:layout_marginBottom="10dp"
+				        android:layout_marginLeft="10dp"
+				        android:orientation="horizontal" >	
+
+				        <TextView
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/chk_option2_desc"
+				            android:textColor="#000000"
+				            android:textSize="14sp" />
+					        
+				    </LinearLayout>
+				    <!-- 구분선 -->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:background="#eaeaea" />
+					
+					<!-- ###################################################### 어플 설치 및 삭제 보호 title -->
+					<LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center_vertical"
+				        android:orientation="horizontal" >	
+
+				        <CheckBox
+				            android:id="@+id/chk_option5"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/option_install_title"
+				            android:textColor="#000000"
+				            android:textSize="15sp"
+				            android:textStyle="bold" />
+					        
+				    </LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginRight="10dp"
+				        android:layout_marginBottom="10dp"
+				        android:layout_marginLeft="10dp"
+				        android:orientation="horizontal" >	
+
+				        <TextView
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/option_install_desc"
+				            android:textColor="#000000"
+				            android:textSize="14sp" />
+					        
+				    </LinearLayout>
+					<!-- 구분선 -->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:background="#eaeaea" />
+					
+				    <!-- ###################################################### 로그 보내기 -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginTop="10dp"
+				        android:orientation="horizontal"
+				        android:gravity="center_vertical|center_horizontal">							    
+				        <LinearLayout
+				            android:layout_width="0dp"
+				            android:layout_weight="1"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical" >	
+
+					        <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginBottom="10dp"
+					            android:layout_marginLeft="20dp"
+					            android:layout_marginTop="10dp"
+					            android:orientation="vertical"
+					            android:text="@string/option_logcat_title"
+					            android:textColor="#000000"
+					            android:textSize="15sp"
+					            android:textStyle="bold" />
+
+					    </LinearLayout>							    
+					    <LinearLayout
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical|center_horizontal" >							    
+						    <Button
+						        android:id="@+id/btn_logcat_send"
+						        android:layout_marginLeft="10dp"
+						        android:layout_marginRight="20dp"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:background="@drawable/tog_btn_send_mid"/>								    
+					    </LinearLayout>
+					</LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="10dp"
+				        android:gravity="center_vertical|center_horizontal"
+				        android:orientation="horizontal" >						    
+				        <LinearLayout 
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1">	
+
+					        <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginLeft="20dp"
+					            android:text="@string/option_logcat_desc"
+					            android:textColor="#000000"
+					            android:textSize="14sp" />
+	
+					    </LinearLayout>
+				    </LinearLayout>
+				    <!-- 구분선 -->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:background="#eaeaea" />
+						    
+					<!-- ###################################################### 상태바 아이콘 title -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginTop="10dp"
+				        android:orientation="horizontal"
+				        android:gravity="center_vertical|center_horizontal">							    
+				        <LinearLayout
+				            android:layout_width="0dp"
+				            android:layout_weight="1"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical" >	
+
+					        <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginBottom="10dp"
+					            android:layout_marginLeft="20dp"
+					            android:layout_marginTop="10dp"
+					            android:orientation="vertical"
+					            android:text="@string/txt_status_setting"
+					            android:textColor="#000000"
+					            android:textSize="15sp"
+					            android:textStyle="bold" />
+
+					    </LinearLayout>							    
+					    <LinearLayout
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical|center_horizontal" >							    
+						    <Button
+						        android:id="@+id/btn_setting_status"
+						        android:layout_marginLeft="10dp"
+						        android:layout_marginRight="20dp"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:background="@drawable/tog_btn_setting_mid_red"/>							    
+					    </LinearLayout>
+					</LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="10dp"
+				        android:gravity="center_vertical|center_horizontal"
+				        android:orientation="horizontal" >						    
+				        <LinearLayout 
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1">	
+
+					        <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginLeft="20dp"
+					            android:text="@string/option_status_desc"
+					            android:textColor="#000000"
+					            android:textSize="14sp" />
+
+					    </LinearLayout>
+				    </LinearLayout>
+				    <!-- 구분선 -->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:background="#eaeaea" />
+					
+				    <!-- ###################################################### 글자 조정 title 
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginTop="10dp"
+				        android:orientation="horizontal"
+				        android:gravity="center_vertical|center_horizontal">							    
+				        <LinearLayout
+				            android:layout_width="0dp"
+				            android:layout_weight="1"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical" >	
+					        <TextView
+					            android:orientation="vertical"
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginLeft="10dp"
+					            android:textColor="#0000ff"
+					            android:textSize="18sp"
+					            android:textStyle="bold"
+					            android:layout_marginTop="10dp"
+					            android:layout_marginBottom="10dp"
+					            android:text="@string/txt_time_text_setting" />
+					    </LinearLayout>							    
+					    <LinearLayout
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:gravity="center_vertical|center_horizontal" >							    
+						    <Button
+						        android:id="@+id/btn_setting_time_text"
+						        android:layout_marginLeft="10dp"
+						        android:layout_marginRight="20dp"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:background="@drawable/tog_btn_setting_mid_red"/>							    
+					    </LinearLayout>
+					</LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="10dp"
+				        android:gravity="center_vertical|center_horizontal"
+				        android:orientation="horizontal" >						    
+				        <LinearLayout 
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1">	
+					        <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_marginLeft="10dp"
+					            android:text="@string/txt_time_text"
+					            android:textColor="#000000"
+					            android:textSize="15sp"/>
+					    </LinearLayout>
+				    </LinearLayout>-->
+				    <!-- 구분선 
+					<LinearLayout 
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:background="#ff6600"/>-->
+					
+					
+					<!-- ###################################################### 암호를 입력하여 해제 가능 title -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center_vertical"
+				        android:orientation="horizontal" >	
+
+				        <CheckBox
+				            android:id="@+id/chk_option10"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/chk_option10_title"
+				            android:textColor="#000000"
+				            android:textSize="15sp"
+				            android:textStyle="bold" />
+					        
+				    </LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginRight="10dp"
+				        android:layout_marginBottom="10dp"
+				        android:layout_marginLeft="10dp"
+				        android:orientation="horizontal" >	
+
+				        <TextView
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/chk_option10_desc"
+				            android:textColor="#000000"
+				            android:textSize="14sp" />
+					        
+				    </LinearLayout>
+				    <!-- 구분선 -->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:background="#eaeaea" />
+					
+					<!-- ###################################################### 남은 시간 표시 title -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center_vertical"
+				        android:orientation="horizontal" >	
+
+				        <CheckBox
+				            android:id="@+id/chk_option1"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/chk_option1_title"
+				            android:textColor="#000000"
+				            android:textSize="15sp"
+				            android:textStyle="bold" />
+					        
+				    </LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginRight="10dp"
+				        android:layout_marginBottom="10dp"
+				        android:layout_marginLeft="10dp"
+				        android:orientation="horizontal" >	
+
+				        <TextView
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/chk_option1_desc"
+				            android:textColor="#000000"
+				            android:textSize="14sp" />
+					        
+				    </LinearLayout>
+				    <!-- 구분선 -->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:background="#eaeaea" />
+
+				    <!-- ###################################################### 새로 설치된 앱 설정 title -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center_vertical"
+				        android:orientation="horizontal" >	
+
+				        <CheckBox
+				            android:id="@+id/chk_option9"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/option_new_install_title"
+				            android:textColor="#000000"
+				            android:textSize="15sp"
+				            android:textStyle="bold" />
+					        
+				    </LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginRight="10dp"
+				        android:layout_marginBottom="10dp"
+				        android:layout_marginLeft="10dp"
+				        android:orientation="horizontal" >	
+
+				        <TextView
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/option_new_install_desc"
+				            android:textColor="#000000"
+				            android:textSize="14sp" />
+					        
+				    </LinearLayout>
+				    <!-- 구분선 -->
+
+					<LinearLayout
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:background="#eaeaea" />
+
+				    <!-- ###################################################### 부팅시 자동 시작 title -->
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center_vertical"
+				        android:orientation="horizontal" >	
+
+				        <CheckBox
+				            android:id="@+id/chk_option7"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/option_boot_title"
+				            android:textColor="#000000"
+				            android:textSize="15sp"
+				            android:textStyle="bold" />
+					        
+				    </LinearLayout>
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginRight="10dp"
+				        android:layout_marginBottom="10dp"
+				        android:layout_marginLeft="10dp"
+				        android:orientation="horizontal" >	
+
+				        <TextView
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_marginLeft="20dp"
+				            android:text="@string/option_boot_desc"
+				            android:textColor="#000000"
+				            android:textSize="14sp" />
+					        
+				    </LinearLayout>
+				    <!-- 구분선 -->
+					
+					
+					
+					
+					
+
+					
+					
+					
+					
+											
+				   	<FrameLayout
+						android:id="@+id/frame_main"
+						android:layout_width="fill_parent"
+						android:layout_height="0dp"
+						android:layout_weight="1"/>		
+				</LinearLayout>
+			
+			</ScrollView>
+			
+		</FrameLayout>
+	</LinearLayout>
+</LinearLayout>

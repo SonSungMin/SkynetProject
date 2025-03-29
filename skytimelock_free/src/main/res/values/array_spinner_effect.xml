@@ -1,0 +1,10 @@
+<!--?xml version="1.0" encoding="utf-8"?-->
+<resources>
+ 
+    <string-array name="array_spinner_effect">
+        <item>@string/rdo_method1</item>
+        <item>@string/rdo_method2</item>
+        <item>@string/rdo_method3</item>
+    </string-array>
+ 
+</resources>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">스마트 타임가이드</string>
+    <string name="title_activity">스마트 타임가이드 시즌II</string>
+    
+    <string name="app_status">스마트 타임가이드 서비스가 시작되었습니다.</string>
+    <string name="app_enable">스마트 타임가이드 서비스가 활성화되었습니다.</string>
+    
+    <string name="install_demon">데몬 서비스 설치</string>
+    <string name="install_demon_desc">데몬을 설치하시면 작업관리자나 메모리정리앱 등으로 강제 종료되지 않습니다.</string>
+    <string name="uninstall_demon">데몬 삭제</string>
+    <string name="uninstall_demon_desc">설치된 데몬 서비스를 삭제합니다.</string>
+    
+    <string name="option_title1">배경 설정</string>
+    <string name="option_title2">기본 잠금 설정</string>
+    <string name="option_title3">잠금 옵션</string>
+    
+    <string name="init_pwd">초기 암호는 777입니다.</string>
+    
+    <string name="lock_message1">앱이 잠겼습니다.\n잠금을 해제하려면 비밀번호를 입력하세요.</string>
+    <string name="lock_message2">금일 사용시간을 모두 소진했습니다.\n사용시간을 초기화 하려면 비밀번호를 입력하세요.</string> 
+    
+    <string name="kill_process">종료된 프로세스 : </string>
+    
+    <string name="unit_ea">개</string>
+    
+    <string name="apply_ok">설정 적용 완료</string>
+    <string name="save_ok">저장 완료</string>
+    <string name="save_err">저장 오류\n다시 시도하세요.</string>
+    <string name="update_ok">수정 완료</string>
+    <string name="update_err">수정 오류\n다시 시도하세요.</string>
+    <string name="delete_ok">삭제 완료</string>
+    <string name="delete_err">삭제 오류\n다시 시도하세요.</string>
+    
+    <string name="option_back_image_title">잠금 화면 배경 설정</string>
+    <string name="option_back_image_desc">잠금 화면에 표시될 배경 이미지를 지정합니다.</string>
+    <string name="option_demon_title">스마트 타임가이드 데몬 설치</string>
+    <string name="option_demon_desc">작업관리자, 메모리정리앱 등으로 강제 종료되지 않습니다.</string>
+    <string name="option_enable_title">잠금 활성화</string>
+    <string name="option_enable_desc">잠금 기능을 활성화합니다.</string>
+    <string name="option_boot_title">부팅시 자동 시작</string>
+    <string name="option_boot_desc">부팅시 앱을 자동으로 시작합니다.</string>
+    <string name="option_freetime_title">사용 가능 잔여 시간 표시</string>
+    <string name="option_freetime_desc">남은 시간을 화면에 표시합니다.</string>
+    <string name="option_screenlock_title">Screen Lock 해제</string>
+    <string name="option_screenlock_desc">화면이 켜지면 Screen Lock을 해제합니다.</string>
+    <string name="option_randombg_title">무작위 배경 화면</string>
+    <string name="option_randombg_desc">선택한 배경이 아닌 무작위로 배경을 표시합니다.</string>
+    <string name="option_install_title">어플 삭제 보호</string>
+    <string name="option_install_desc">타임가이드 어플 삭제시 암호로 보호합니다.\n삭제시 이 옵션을 해제해야 삭제가 가능합니다.\n(기기관리자로 등록됩니다.)</string>
+    <string name="option_logcat_title">오류 로그 전송</string>
+    <string name="option_logcat_desc">오류 로그를 전송합니다.\n오류 수정에 많은 도움이 됩니다.</string>
+    
+    
+    
+    <string name="method1">오류창을 표시합니다.</string>
+    <string name="method2">패스워드 입력화면을 표시합니다.</string>
+    <string name="method3">패턴 입력화면을 표시합니다.</string>
+    <string name="search_text">검색 어플명 입력</string>
+    <string name="tab_setting">환경설정</string>
+    <string name="tab_all_app">전체</string>
+    <string name="tab_time_app">시간제한</string>
+    <string name="tab_lock_app">잠금</string>
+    <string name="tab_setting_eng">Setting</string>
+    <string name="tab_all_app_eng">ALL App.</string>
+    <string name="tab_time_app_eng">Limited</string>
+    <string name="tab_lock_app_eng">Lock</string>
+    <string name="rdo_method1">오류창</string>
+    <string name="rdo_method2">암호</string>
+    <string name="rdo_method3">패턴</string>
+    <string name="err_pattern">설정된 패턴이 없습니다.\n환경 설정에서 패턴을 등록하세요.</string>
+    <string name="app_lock">앱이 잠겼습니다.\n비밀번호를 입력하세요.</string>
+    <string name="app_pattern">앱이 잠겼습니다.\n패턴을 입력하세요.</string>
+    <string name="app_timeout">사용시간을 모두 소진했습니다.\n비밀번호를 입력하세요.</string>
+    <string name="msg_cur_pwd">현재 비밀번호를 입력하세요.</string>
+    <string name="msg_cur_pwd_chg">변경할 비밀번호를 입력하세요.</string>
+    <string name="msg_cur_pwd_chg_ok">비밀번호가 변경되었습니다.</string>
+    <string name="msg_cur_pwd_chg_again">한 번 더 입력하세요.</string>
+    <string name="msg_cur_pwd_err">비밀번호가 올바르지 않습니다.\n다시 입력하세요.</string>
+    <string name="alp_cmd_confirm">확인</string>
+    <string name="alp_cmd_continue">계속</string>
+    <string name="alp_cmd_retry">다시</string>
+    <string name="alp_lockscreen_access_pattern_cell_added">Cell added</string>
+    <string name="alp_lockscreen_access_pattern_cleared">Pattern cleared</string>
+    <string name="alp_lockscreen_access_pattern_detected">Pattern completed</string>
+    <string name="alp_lockscreen_access_pattern_start">Pattern started</string>
+    <string name="alp_msg_connect_4dots">최소 4개의 점을 통과해야됩니다.</string>
+    <string name="alp_msg_draw_an_unlock_pattern">잠금 해제 패턴을 그리세요.</string>
+    <string name="alp_msg_draw_pattern_to_unlock">잠금 해제 패턴을 그리세요.</string>
+    <string name="alp_msg_pattern_recorded">패턴이 저장되었습니다.</string>
+    <string name="alp_msg_redraw_pattern_to_confirm">확인을 위해 패턴을 다시 그리세요.</string>
+    <string name="alp_msg_release_finger_when_done">완료되면 손가락을 뗍니다.</string>
+    <string name="alp_msg_try_again">죄송합니다. 다시 시도하세요.</string>
+    <string name="alp_msg_your_new_unlock_pattern">새 잠금해제 패턴 완료</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_sky_time_lock_helper">SkyTimeLockHelperActivity</string>
+	
+    
+    <string name="dialog_choose_image">배경 이미지 선택</string>
+    <string name="dialog_choose_image_msg">선택하신 이미지를 배경으로 설정합니다.</string>
+    <string name="dialog_delete_image">배경 이미지 삭제</string>
+    <string name="dialog_delete_image_msg">선택하신 이미지를 삭제합니다.</string>
+    <string name="dialog_no_selected">선택된 항목이 없습니다.</string>
+    <string name="dialog_delete_ok_msg">삭제 완료</string>
+        
+    <string name="txt_setting">설정</string>
+    <string name="txt_min">분</string>
+    <string name="txt_spear">잔여</string>
+    <string name="txt_lockapp">잠금 어플</string>
+    <string name="txt_notset">클릭하세요.</string>
+    
+    <string name="err_select">조회시 오류가 발생했습니다.\n오류 로그를 발송해주시면 오류를 수정하는데 많은 도움이됩니다.</string>
+    <string name="err_save">저장시 오류가 발생했습니다.\n오류 로그를 발송해주시면 오류를 수정하는데 많은 도움이됩니다.</string>
+    <string name="err_delete">삭제시 오류가 발생했습니다.\n오류 로그를 발송해주시면 오류를 수정하는데 많은 도움이됩니다.</string>
+    <string name="err_insert">추가시 오류가 발생했습니다.\n오류 로그를 발송해주시면 오류를 수정하는데 많은 도움이됩니다.</string>
+    
+    <string name="dialog_time_limits">일일 사용시간 제한</string>
+    <string name="dialog_app_lock">앱 잠금</string>
+    <string name="dialog_unlock">사용 제한 해제</string>
+    <string name="dialog_hour">시간</string>
+    <string name="dialog_min">분</string>
+    <string name="dialog_title1">잠금 설정</string>
+    <string name="dialog_title2">잠금 화면</string>
+    <string name="dialog_option_title">잠금 화면을 선택하세요</string>
+    <string name="dialog_option_pattern">패턴 암호가 설정되지 않았습니다.\n패턴 암호를 먼저 설정하세요</string>
+    <string name="dialog_option_wifi">WiFi에 접속된 경우 실행</string>
+    
+    <string name="wifi_title">WiFi 접속 확인</string>
+    <string name="wifi_msg">WiFi에 접속되지 않았습니다.\nWiFi에 접속 중입니다.\n\nWiFi에 접속을 중지하고\n앱을 실행하시겠습니까?</string>
+    <string name="wifi_btn_yes">Yes</string>
+    <string name="wifi_btn_no">No</string>
+    
+    <string name="img_desc">Image</string>
+    <string name="only_one_message">이 메시지를 표시하지 않습니다.</string>
+    
+    <string name="txt_batch">일괄 설정</string>
+    
+    <string name="app_row_title1">추천 필수 잠금 어플</string>
+    <string name="app_row_title2">추천 항상 실행 가능 어플</string>
+    <string name="app_row_title3">미설정 어플</string>
+    <string name="app_row_title4">항상 실행 가능 어플</string>
+    <string name="app_row_title5">시간 제한 어플</string>
+    <string name="app_row_title6">잠금 어플</string>
+    
+    <string name="msg_no_selected">선택된 항목이 없습니다.</string>
+    
+    <string name="msg_lock_sms">원격 요청으로 스마트폰이 잠김니다.</string>
+    <string name="msg_unlock_sms">원격 요청으로 암호가 초기화되었습니다.</string>
+    
+    <string name="txt_lock_view">잠금 화면 설정</string>
+    
+    <string name="txt_save">저장</string>
+    <string name="txt_apply">적용</string>
+    <string name="txt_cancel">취소</string>
+    
+    
+    <string name="txt_status_setting">상태바 아이콘 설정</string>
+    <string name="option_status_desc">상태바의 아이콘을 변경합니다.</string>
+    <string name="option_new_install_title">신규 설치시 앱 잠금</string>
+    <string name="option_new_install_desc">신규로 설치된 앱을 잠금니다.</string>
+    
+    <string name="txt_time_text_setting">남은 시간 표시 글자 설정</string>
+    <string name="txt_time_text">사용시간 제한이 걸린 앱이 실행될 때 표시되는 글자의 모양을 설정합니다.</string>
+    
+    <string name="txt_remote_setting">원격 잠금 설정</string>
+    <string name="option_remote_title">SMS 수신시 잠금</string>
+    <string name="option_remote_desc">설정된 문자를 수신하면 스마트폰이 잠김니다.\n스마트폰 분실시 개인 정보를 보호합니다.</string>
+    <string name="txt_remote_setting_setting">SMS 잠금 설정</string>
+    <string name="txt_remote_setting_title">수신 문자 입력</string>
+    <string name="txt_remote_setting_msg">상기에 설정된 SMS를 수신하면 스마트폰이 잠김니다.\n스마트폰 분실시 개인 정보를 보호합니다.</string>
+    
+    <string name="option_remote_unlock_title">SMS 수신시 암호 초기화</string>
+    <string name="option_remote_unlock_desc">설정된 문자를 수신하면 암호가 초기화됩니다.\n암호 분실시 유용하게 사용됩니다.</string>
+    <string name="txt_remote_unlock_setting">암호 초기화 설정</string>
+    <string name="txt_remote_unlock_title">수신 문자 입력</string>
+    <string name="txt_remote_unlock_msg">상기 설정된 문자를 수신하면 암호가 초기화됩니다.\n초기화된 암호는 777입니다.</string>
+    
+    <string name="txt_lock_method">1. 잠금 방법 설정</string>
+    <string name="rdo_lock_method1">앱별 시간 제한</string>
+    <string name="rdo_lock_method2">일일 시간 제한</string>
+    <string name="rdo_lock_method1_desc">특정 앱만 사용시간을 제한합니다.\n매일 자정이 지나면 사용시간이 초기화됩니다.</string>
+    <string name="rdo_lock_method2_desc">항상 허용 가능 앱을 제외한 모든 앱에 대해서 일일 스마트폰 사용 시간을 제한합니다.\n매일 자정이 지나면 사용시간이 초기화됩니다.</string>
+        
+    <string name="day_able_desc">항상 실행 가능한 앱을 설정하세요.\n런처 앱은 항상 실행 가능앱으로 설정하시는게 좋습니다.</string>
+    <string name="txt_setting_time">사용 가능 시간</string>
+    <string name="txt_spear_time">잔여 시간</string>
+    
+    <string name="txt_location">글자 위치 설정</string>
+    <string name="txt_color">글자 색상 설정</string>
+    
+    <string name="txt_update">최신 버전 업데이트 안내</string>
+    
+    <string name="ok_admin">기기 관리자로 등록되었습니다.\n삭제시 암호로 보호합니다.</string>
+    <string name="no_admin">기기 관리자가 해제되었습니다.\n삭제가 자유로워집니다.</string>
+    
+    <string name="chk_option1_title">남은 시간 표시</string>
+    <string name="chk_option1_desc">시간 제한 앱이 실행될 때 화면에 남은 시간을 표시합니다.</string>
+	
+    <string name="txt_lock_period">2. 세부 설정</string>
+    <string name="rdo_lock_period1">매일</string>
+    <string name="rdo_lock_period2">주간</string>
+    <string name="rdo_lock_period1_desc">매일 실행되도록 설정합니다.</string>
+    <string name="rdo_lock_period2_desc">특정 요일에만 실행되도록 설정합니다.</string>
+    <string name="txt_mon">월</string>
+    <string name="txt_tue">화</string>
+    <string name="txt_wed">수</string>
+    <string name="txt_thu">목</string>
+    <string name="txt_fri">금</string>
+    <string name="txt_sat">토</string>
+    <string name="txt_sun">일</string>
+    
+    
+    <string name="chk_option2_title">설정화면 잠금</string>
+    <string name="chk_option2_desc">타임가이드 설정화면을 암호로 보호합니다.</string>
+    
+    
+    <string name="txt_lock_activity">사용 가능 시간 설정</string>
+    <string name="txt_lock_activity_desc">설정된 요일과 시간 동안만 작동합니다.\n설정 시간 체크 해제시 시간 제약 없이 항상 실행됩니다.</string>
+    <string name="txt_dialog_activity">제한 시간 설정</string>
+    <string name="txt_dialog_activity_title">시작/종료 시간 설정</string>
+    <string name="txt_dialog_activity_desc">설정된 시간에만 사용가능합니다.\n시작/종료 시간을 설정하세요.</string>
+    <string name="txt_setting_activity">제한 시간 설정</string>
+    <string name="txt_setting_lock_activity">항상 잠금 어플 설정</string>
+    <string name="txt_setting_lock_activity_desc">항상 잠금 어플을 설정합니다.\n설정된 비번을 모르면 실행되지 않게합니다.</string>
+    
+    <string name="txt_setting_dayofweek">적용할 요일 선택</string>
+    <string name="txt_allways_able">항상 허용 가능 어플 설정</string>
+    <string name="txt_allways_able_desc">설정된 제한 시간과 상관 없이 항상 사용 가능한 어플을 설정하세요.\n예) 전화,문자,런처앱</string>
+    
+    <string name="txt_prior_setting">새로운 시간 제한 설정을 추가하시려면 + 버튼을 누르세요. 이미 추가된 설정을 변경하시려면 추가된 설정을 클릭하세요.</string>
+    <string name="txt_daily_setting">새로운 시간 제한 앱을 추가하시려면 + 버튼을 누르세요. 이미 추가된 설정을 변경하시려면 추가된 설정을 클릭하세요.</string>
+    
+    <string name="txt_exist_prior">해당 요일은 이미 등록되어 있습니다.</string>
+    
+    <string name="title_timelock">시간제한 어플 설정</string>
+    <string name="txt_setting_time_activity_desc">시간 제한 어플을 설정합니다.\n설정된 시간을 소진하면 어플을 사용할 수 없습니다.\n설정된 암호를 입력하면 사용시간이 초기화됩니다.</string>
+    <string name="title_lock">잠금 어플 설정</string>
+    <string name="title_all">어플 설정</string>
+    
+    <string name="txt_method1_desc">시간 제한을 적용할 요일을 선택합니다.\n선택된 요일에만 작동합니다.</string>
+    <string name="txt_method2_desc">시간 제한을 적용할 요일과 일일 사용시간을 설정합니다.\n선택된 요일에만 작동합니다.</string>
+    
+    <string name="txt_no_setting">등록된 앱이 없습니다.</string>
+    <string name="txt_exit">\'뒤로\'버튼을 한번더 누르시면 종료됩니다.</string>
+    
+    
+    <string name="txt_history_title">금일 사용시간</string>
+    <string name="txt_history">앱 사용 통계</string>
+    
+    <string name="chk_option10_title">잠금 해제 기능 활성화</string>
+    <string name="chk_option10_desc">잠금 화면에서 암호 또는 패턴을 입력하여 잠금을 해제할 수 있습니다. 비활성화시 암호 및 패턴 입력 키패드가 나타나지 않습니다.</string>
+    
+    <string name="txt_today_used">금일 사용 시간 </string>
+    
+    <string name="txt_blue_light_filter">블루 라이트 필터 (투명도)</string>
+    <string name="txt_blue_light_filter_desc">블루 라이트란?\n가시광선 중에서 푸른빛을 말하며 가장 에너지가 높고, 눈의 각막이나 수정체로 흡수되지 않아 망막까지 도달하여 망막의 기능저하를 일으킬수 있는 것으로 알려져 있습니다.\n\n블루 라이트 필터는 블루 라이트의 푸른 빛을 완화시켜 눈 건강에 도움을 줍니다.</string>
+    
+    
+    <string name="txt_title_health">건강한 스마트폰 사용</string>
+    <string name="txt_health_bluelight">블루 라이트 필터 사용</string>
+    <string name="txt_health_bluelight_desc">블루 라이트 필터는 블루 라이트의 푸른 빛을 완화시켜 눈 건강에 도움을 줍니다.</string>
+    
+    <string name="launcher_app">『런처앱』 </string>
+    
+    
+</resources>

@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:gravity="center_vertical"
+    android:orientation="vertical" >
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="40dp"
+	    android:layout_marginBottom="2dp"
+	    android:background="#ff6600"
+	    android:gravity="center_vertical"
+	    android:orientation="horizontal" >
+	    
+		<TextView
+		    android:layout_width="wrap_content"
+		    android:layout_height="fill_parent"
+		    android:layout_marginLeft="10dp"
+		    android:gravity="center"
+		    android:orientation="vertical"
+		    android:text="@string/txt_dialog_activity"
+		    android:textColor="#ffffff"
+		    android:textSize="15sp"
+		    android:textStyle="bold" />
+
+		<LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:gravity="right|center" >
+		</LinearLayout>
+	</LinearLayout>
+    
+	<!-- title -->
+
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="30dp"
+	    android:layout_marginBottom="5dp"
+	    android:layout_marginTop="5dp"
+	    android:gravity="bottom"
+	    android:orientation="vertical" >
+
+		<TextView
+		    android:layout_width="wrap_content"
+		    android:layout_height="fill_parent"
+		    android:layout_marginLeft="10dp"
+		    android:gravity="center"
+		    android:orientation="vertical"
+		    android:text="@string/txt_setting_dayofweek"
+		    android:textColor="#ff6600"
+		    android:textSize="14sp"
+		    android:textStyle="bold" />
+
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="1dp"
+		    android:layout_marginLeft="10dp"
+		    android:layout_marginRight="10dp"
+		    android:background="#ff6600"
+		    android:orientation="vertical" >
+
+		</LinearLayout>
+
+	</LinearLayout>
+	
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" >
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical" >
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" >
+        
+        <ToggleButton
+            android:id="@+id/togbtn_sun"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            android:textStyle="bold"
+            android:textOn="@string/txt_sun"
+            android:textOff="@string/txt_sun"/>		
+        <ToggleButton
+            android:id="@+id/togbtn_mon"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textOn="@string/txt_mon"
+            android:textOff="@string/txt_mon"/>
+        <ToggleButton
+            android:id="@+id/togbtn_tue"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textOn="@string/txt_tue"
+            android:textOff="@string/txt_tue"/>
+        <ToggleButton
+            android:id="@+id/togbtn_wed"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textOn="@string/txt_wed"
+            android:textOff="@string/txt_wed"/>
+        <ToggleButton
+            android:id="@+id/togbtn_thu"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:textOn="@string/txt_thu"
+            android:textOff="@string/txt_thu"/>
+        <ToggleButton
+            android:id="@+id/togbtn_fri"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textOn="@string/txt_fri"
+            android:textOff="@string/txt_fri"/>
+        <ToggleButton
+            android:id="@+id/togbtn_sat"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:textColor="#0000ff"
+            android:textStyle="bold"
+            android:textOn="@string/txt_sat"
+            android:textOff="@string/txt_sat"/>
+
+    </LinearLayout>
+     
+    
+    <!-- title -->
+
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="30dp"
+	    android:layout_marginTop="20dp"
+	    android:gravity="bottom"
+	    android:orientation="vertical" >
+
+		<TextView
+		    android:layout_width="wrap_content"
+		    android:layout_height="fill_parent"
+		    android:layout_marginLeft="10dp"
+		    android:gravity="center"
+		    android:orientation="vertical"
+		    android:text="@string/txt_lock_activity"
+		    android:textColor="#ff6600"
+		    android:textSize="14sp"
+		    android:textStyle="bold" />
+
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="1dp"
+		    android:layout_marginLeft="10dp"
+		    android:layout_marginRight="10dp"
+		    android:background="#ff6600"
+		    android:orientation="vertical" >
+		</LinearLayout>
+
+	</LinearLayout>
+    	
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp">
+
+		<LinearLayout
+		    android:id="@+id/layout_time_able"
+		    android:layout_width="match_parent"
+		    android:layout_height="fill_parent"
+		    android:orientation="vertical" >
+
+		    <!-- $$$$$$$$$$$$$$$$ 설정 시간 $$$$$$$$$$$$$$$ -->
+
+		    <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="15dp"
+		        android:layout_marginTop="10dp"
+		        android:text="@string/txt_setting_time"
+		        android:textColor="#000000"
+		        android:textSize="14sp"
+		        android:textStyle="bold" />
+
+		    <LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginBottom="10dp"
+		        android:layout_marginLeft="15dp"
+		        android:layout_marginRight="15dp"
+		        android:gravity="center_vertical" >
+
+		        <TextView
+		            android:id="@+id/txt_lock_time_hour"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="5dp"
+		            android:text="01"
+		            android:textColor="#000000"
+		            android:textSize="20sp"
+		            android:textStyle="bold" />
+	
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="10dp"
+		            android:text="@string/dialog_hour"
+		            android:textColor="#000000"
+		            android:textSize="18sp"
+		            android:textStyle="bold" />
+
+		        <TextView
+		            android:id="@+id/txt_lock_time_min"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="5dp"
+		            android:text="00"
+		            android:textColor="#000000"
+		            android:textSize="20sp"
+		            android:textStyle="bold" />
+	
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="5dp"
+		            android:text="@string/dialog_min"
+		            android:textColor="#000000"
+		            android:textSize="18sp"
+		            android:textStyle="bold" />
+		
+		        <Button
+		            android:id="@+id/btn_set_plus_lock"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="10dp"
+		            android:background="@drawable/tog_btn_plus" />						
+		        <Button
+		            android:id="@+id/btn_set_minus_lock"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="5dp"
+		            android:background="@drawable/tog_btn_minus" />
+		    </LinearLayout>
+		    <!-- $$$$$$$$$$$$ 잔여 시간 $$$$$$$$$$$ -->
+
+			<TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="15dp"
+			    android:text="@string/txt_spear_time"
+			    android:textColor="#ff0000"
+			    android:textSize="14sp"
+			    android:textStyle="bold" />
+
+			<LinearLayout
+			    android:id="@+id/lay_lock_able_time"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginBottom="15dp"
+			    android:layout_marginLeft="15dp"
+			    android:layout_marginRight="15dp"
+			    android:gravity="center_vertical" >
+
+		        <TextView
+		            android:id="@+id/txt_lock_able_hour"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="5dp"
+		            android:text="01"
+		            android:textColor="#ff0000"
+		            android:textSize="20sp"
+		            android:textStyle="bold" />
+	
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="10dp"
+		            android:text="@string/dialog_hour"
+		            android:textColor="#ff0000"
+		            android:textSize="18sp"
+		            android:textStyle="bold" />
+
+		        <TextView
+		            android:id="@+id/txt_lock_able_min"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="5dp"
+		            android:text="00"
+		            android:textColor="#ff0000"
+		            android:textSize="20sp"
+		            android:textStyle="bold" />
+	
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="5dp"
+		            android:text="@string/dialog_min"
+		            android:textColor="#ff0000"
+		            android:textSize="18sp"
+		            android:textStyle="bold" />
+		        
+		        <Button
+		            android:id="@+id/btn_init"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="10dp"
+		            android:background="@drawable/tog_btn_init" />
+		        
+			    <Button
+			        android:id="@+id/btn_lock_setting"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="5dp"
+			        android:background="@drawable/tog_btn_setting_mid" />
+
+		    </LinearLayout>
+	    </LinearLayout>
+
+    </LinearLayout>
+    
+    <!-- 구분선 -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#ff6600"
+        android:gravity="center_horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.5"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/txt_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:text="Save"
+                android:textColor="#ffffff"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.5"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/txt_cancle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:text="Cancel"
+                android:textColor="#ffffff"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    
+</LinearLayout>

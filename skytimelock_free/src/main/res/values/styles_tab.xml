@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SkyNet.Tab" parent="android:Theme">
+        <item name="android:tabWidgetStyle">@style/Widget.TabWidget</item>
+    </style>
+    <style name="Widget.TabWidget" parent="android:Widget.TabWidget">
+         <item name="android:background">@drawable/title_bg</item>
+    </style>
+</resources>

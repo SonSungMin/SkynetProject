@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+	
+    <LinearLayout
+        android:id="@+id/row_app_title"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="bottom"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/row_app_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff6600"
+            android:text="Title" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="1dp"
+            android:background="#ff6600"
+            android:clickable="false"
+            android:focusable="false" >
+        </LinearLayout>	    
+    </LinearLayout>
+    
+    
+    <!-- 데이터가 없을 경우 보여줄 row -->
+
+    <LinearLayout
+        android:id="@+id/layout_row_empty"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|center_horizontal">
+        	
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+	        
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:singleLine="true"
+	            android:layout_marginLeft="10dp"
+	            android:text="@string/txt_no_setting"
+	            android:textColor="#0000ff"
+	            android:textSize="17sp" />
+		</LinearLayout>		
+    </LinearLayout>
+        
+    <LinearLayout
+        android:id="@+id/layout_row_app"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:weightSum="10" >
+        
+        <LinearLayout 
+            android:layout_height="fill_parent"
+        	android:layout_width="wrap_content"
+        	android:gravity="center_vertical">
+		        <CheckBox 
+		            android:id="@+id/chk_app"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="5dp"/>
+        </LinearLayout>
+        
+        <ImageView
+            android:id="@+id/img_app_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="7dp"
+            android:src="@drawable/main_icon" />
+        	
+        <LinearLayout
+            android:id="@+id/row_app_body"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_weight="10"
+            android:weightSum="2" >
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="bottom" >
+
+		        <TextView
+		            android:id="@+id/txt_app_name"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:singleLine="true"
+		            android:text="App Name"
+		            android:textSize="13sp" />
+
+	        </LinearLayout>
+	        
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="0dp"
+	            android:layout_weight="1"
+	            android:layout_marginRight="10dp"
+	            android:gravity="right|bottom"
+	            android:orientation="horizontal">
+	            
+	            <LinearLayout
+	                android:id="@+id/layout_status"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:gravity="center_vertical|right"
+		            android:orientation="horizontal">
+		            <TextView
+		                android:id="@+id/txt_app_desc"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_marginRight="5dp"
+		                android:singleLine="true"
+		                android:text="사용 시간 제한"
+		                android:textSize="12sp" />
+		            
+		            <ImageView 
+		                android:id="@+id/img_ststus_icon"
+		                android:layout_width="25dp"
+			            android:layout_height="25dp"
+			            android:layout_marginRight="7dp"
+			            android:src="@drawable/icon_time"/>
+		            
+		            <ImageView 
+		                android:id="@+id/img_lock_icon"
+		                android:layout_width="25dp"
+			            android:layout_height="25dp"
+			            android:layout_marginRight="7dp"
+			            android:src="@drawable/icon_broken"/>
+		            
+		            <ImageView 
+		                android:id="@+id/img_wifi_icon"
+		                android:layout_width="25dp"
+			            android:layout_height="25dp"
+			            android:layout_marginRight="5dp"
+			            android:src="@drawable/icon_wifi"/>
+
+	            </LinearLayout>
+	           	
+	            <!-- 패키지명 참고용 -->
+	            <TextView
+	                android:id="@+id/txt_app_pkgname"
+		            android:layout_width="0dp"
+		            android:layout_height="0dp"
+		            android:visibility="invisible"/>
+	            <!-- 설정시간 참고용 -->
+	            <TextView
+	                android:id="@+id/txt_app_lmttime"
+		            android:layout_width="0dp"
+		            android:layout_height="0dp"
+		            android:visibility="invisible"/>
+	            <!-- 남은시간 참고용 -->
+	            <TextView
+	                android:id="@+id/txt_app_spctime"
+		            android:layout_width="0dp"
+		            android:layout_height="0dp"
+		            android:visibility="invisible"/>
+	            
+			</LinearLayout>
+		</LinearLayout>		
+    </LinearLayout>
+    
+    <!-- Line #e5a25a-->
+    
+</LinearLayout>
