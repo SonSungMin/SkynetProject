@@ -95,4 +95,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
 
     implementation("com.google.android.material:material:1.9.0")
+
+    // AdMob 의존성 추가
+    implementation("com.google.android.gms:play-services-ads:22.6.0")
 }
