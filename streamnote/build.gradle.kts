@@ -13,8 +13,8 @@ android {
         applicationId = "com.skynet.streamnote"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2  // 버전 코드 증가
+        versionName = "1.1"  // 버전 이름 변경
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

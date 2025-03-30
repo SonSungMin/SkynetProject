@@ -107,8 +107,7 @@ fun MemoListScreen(viewModel: StreamNoteViewModel, modifier: Modifier = Modifier
                     viewModel.updateMemo(memo)
                 }
                 showAddDialog = false
-            },
-            viewModel = viewModel
+            }
         )
     }
 }

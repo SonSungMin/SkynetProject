@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 
 class ThemeRepository(private val themeDao: ThemeDao) {
+
     fun getAllThemes(): Flow<List<Theme>> = themeDao.getAllThemes()
 
     fun getThemeById(themeId: Int): Flow<Theme?> = themeDao.getThemeById(themeId)
@@ -14,6 +15,14 @@ class ThemeRepository(private val themeDao: ThemeDao) {
     suspend fun insertTheme(theme: Theme): Long = themeDao.insertTheme(theme)
 
     suspend fun insertDefaultThemes() {
+        // 현재 테마 수를 확인
+        val currentThemes = themeDao.getAllThemes().first()
+
+        // 이미 테마가 있으면 종료
+        if (currentThemes.isNotEmpty()) {
+            return
+        }
+
         // 기본 테마들 추가
         val themes = listOf(
             Theme(
@@ -31,65 +40,65 @@ class ThemeRepository(private val themeDao: ThemeDao) {
                 marginHorizontal = 0
             ),
             Theme(
-                name = "밝은 파랑",
-                backgroundColor = Color.argb(200, 0, 0, 200),
+                name = "스트리머 레드",
+                backgroundColor = Color.argb(180, 200, 0, 0),
                 textColor = Color.WHITE,
                 textSize = 18f,
-                fontFamily = "Default",
+                fontFamily = "SansSerif",
                 isBold = true,
                 isItalic = false,
-                scrollSpeed = 1.2f,
+                scrollSpeed = 1.3f,
                 position = "TOP",
-                marginTop = 0,
+                marginTop = 10,
                 marginBottom = 0,
-                marginHorizontal = 0
+                marginHorizontal = 5
             ),
             Theme(
-                name = "빨간색 강조",
-                backgroundColor = Color.argb(200, 200, 0, 0),
+                name = "게이머 블루",
+                backgroundColor = Color.argb(180, 0, 0, 180),
                 textColor = Color.WHITE,
                 textSize = 20f,
                 fontFamily = "Default",
                 isBold = true,
-                isItalic = true,
+                isItalic = false,
                 scrollSpeed = 1.5f,
-                position = "TOP",
+                position = "BOTTOM",
                 marginTop = 0,
-                marginBottom = 0,
-                marginHorizontal = 0
+                marginBottom = 20,
+                marginHorizontal = 10
             ),
             Theme(
-                name = "투명 회색",
-                backgroundColor = Color.argb(150, 100, 100, 100),
-                textColor = Color.WHITE,
-                textSize = 16f,
+                name = "형광 그린",
+                backgroundColor = Color.argb(160, 0, 0, 0),
+                textColor = Color.argb(255, 0, 255, 0),
+                textSize = 18f,
                 fontFamily = "Monospace",
                 isBold = false,
                 isItalic = false,
-                scrollSpeed = 0.8f,
+                scrollSpeed = 1.2f,
                 position = "TOP",
-                marginTop = 0,
+                marginTop = 5,
                 marginBottom = 0,
                 marginHorizontal = 0
             ),
             Theme(
-                name = "어둠 모드",
-                backgroundColor = Color.argb(220, 20, 20, 20),
-                textColor = Color.argb(255, 0, 255, 0), // 녹색 텍스트
-                textSize = 18f,
+                name = "깔끔한 화이트",
+                backgroundColor = Color.argb(180, 255, 255, 255),
+                textColor = Color.BLACK,
+                textSize = 16f,
                 fontFamily = "Serif",
                 isBold = false,
                 isItalic = false,
                 scrollSpeed = 1.0f,
-                position = "TOP",
+                position = "BOTTOM",
                 marginTop = 0,
-                marginBottom = 0,
-                marginHorizontal = 0
+                marginBottom = 10,
+                marginHorizontal = 10
             )
         )
 
-        themes.forEach { theme ->
-            insertTheme(theme)
+        for (theme in themes) {
+            val id = insertTheme(theme)
         }
     }
 

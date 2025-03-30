@@ -1,5 +1,6 @@
 package com.skynet.streamnote.ui.screens
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
@@ -18,6 +19,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.skynet.streamnote.ui.components.BannerAdView
 import com.skynet.streamnote.ui.viewmodel.StreamNoteViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -47,19 +49,25 @@ fun StreamNoteApp(viewModel: StreamNoteViewModel) {
             )
         },
         bottomBar = {
-            NavigationBar {
-                tabs.forEachIndexed { index, title ->
-                    NavigationBarItem(
-                        icon = {
-                            Icon(
-                                if (index == 0) Icons.Default.List else Icons.Default.Settings,
-                                contentDescription = title
-                            )
-                        },
-                        label = { Text(title) },
-                        selected = selectedTab == index,
-                        onClick = { selectedTab = index }
-                    )
+            Column {
+                // 배너 광고 추가
+                BannerAdView()
+
+                // 기존 탭바
+                NavigationBar {
+                    tabs.forEachIndexed { index, title ->
+                        NavigationBarItem(
+                            icon = {
+                                Icon(
+                                    if (index == 0) Icons.Default.List else Icons.Default.Settings,
+                                    contentDescription = title
+                                )
+                            },
+                            label = { Text(title) },
+                            selected = selectedTab == index,
+                            onClick = { selectedTab = index }
+                        )
+                    }
                 }
             }
         }

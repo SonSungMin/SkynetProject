@@ -56,6 +56,7 @@ class MemoOverlayService : Service() {
         const val NOTIFICATION_ID = 1001
     }
 
+    // 서비스가 시작될 때 전역 테마 ID 로드
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
@@ -71,10 +72,13 @@ class MemoOverlayService : Service() {
             }
         }
 
-        // 기본 테마 설정
+        // 전역 테마 설정 로드
+        val sharedPrefs = getSharedPreferences("streamnote_preferences", Context.MODE_PRIVATE)
+        val globalThemeId = sharedPrefs.getInt("global_theme_id", 1) // 기본값 1 (첫 번째 테마)
+
         CoroutineScope(Dispatchers.Main).launch {
-            val themes = themeRepository.getAllThemes().first()
-            currentTheme = if (themes.isNotEmpty()) themes[0] else null
+            val theme = themeRepository.getThemeById(globalThemeId).first()
+            currentTheme = theme ?: themeRepository.getAllThemes().first().firstOrNull()
             updateOverlayAppearance()
         }
 
@@ -174,6 +178,9 @@ class MemoOverlayService : Service() {
 
         // 위치 및 여백 적용
         updateOverlayPosition(theme)
+
+        // 테마 변경 시 애니메이션 다시 시작
+        startScrollingAnimation()
     }
 
     private fun updateOverlayPosition(theme: Theme) {
@@ -207,26 +214,37 @@ class MemoOverlayService : Service() {
     private fun startScrollingAnimation() {
         val textView = overlayView?.findViewById<TextView>(R.id.overlayTextView) ?: return
 
+        // 기존 애니메이션 중지
+        animation?.cancel()
+
         // 화면 너비 계산
         val displayMetrics = resources.displayMetrics
         val screenWidth = displayMetrics.widthPixels
 
-        // 애니메이션 설정
-        // 화면 오른쪽 끝에서 시작하여 컨텐츠가 완전히 화면을 벗어날 때까지 이동
-        animation = ObjectAnimator.ofFloat(textView, "translationX", screenWidth.toFloat(), -textView.width.toFloat()).apply {
-            duration = (10000 / (currentTheme?.scrollSpeed ?: 1f)).toLong()
-            interpolator = LinearInterpolator()
-            repeatCount = ValueAnimator.INFINITE
+        // 애니메이션 속도 계산 (스크롤 속도가 높을수록 애니메이션 시간은 짧아져야 함)
+        val scrollSpeed = currentTheme?.scrollSpeed ?: 1f
+        val duration = (10000 / scrollSpeed).toLong()
 
-            addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationRepeat(animation: Animator) {
-                    super.onAnimationRepeat(animation)
-                    // 애니메이션 반복 시 다음 메모로 넘어감
-                    updateOverlayContent()
-                }
-            })
+        // 텍스트 뷰의 너비 측정을 위해 처리
+        textView.post {
+            val textWidth = textView.width.toFloat()
 
-            start()
+            // 애니메이션 설정
+            animation = ObjectAnimator.ofFloat(textView, "translationX", screenWidth.toFloat(), -textWidth).apply {
+                this.duration = duration
+                interpolator = LinearInterpolator()
+                repeatCount = ValueAnimator.INFINITE
+
+                addListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationRepeat(animation: Animator) {
+                        super.onAnimationRepeat(animation)
+                        // 애니메이션 반복 시 다음 메모로 넘어감
+                        updateOverlayContent()
+                    }
+                })
+
+                start()
+            }
         }
     }
 
@@ -281,6 +299,8 @@ class MemoOverlayService : Service() {
                                 if (theme != null) {
                                     currentTheme = theme
                                     updateOverlayAppearance()
+                                    // 테마 업데이트 시 애니메이션도 다시 시작
+                                    startScrollingAnimation()
                                 }
                             }
                         }

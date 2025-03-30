@@ -1,33 +1,18 @@
-// com/skynet/streamnote/ui/screens/ThemeSettingsScreen.kt
 package com.skynet.streamnote.ui.screens
 
+import android.util.Log
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -45,29 +30,50 @@ import com.skynet.streamnote.ui.viewmodel.StreamNoteViewModel
 @Composable
 fun ThemeSettingsScreen(viewModel: StreamNoteViewModel, modifier: Modifier = Modifier) {
     val themes by viewModel.allThemes.collectAsState(initial = emptyList())
+    val currentThemeId = remember { mutableStateOf(viewModel.getGlobalThemeId()) }
     var selectedTheme by remember { mutableStateOf<Theme?>(null) }
     var showEditDialog by remember { mutableStateOf(false) }
 
+    // 로그 추가
+    Log.d("ThemeSettingsScreen", "테마 개수: ${themes.size}")
+
     Column(modifier = modifier.fillMaxSize()) {
         Text(
-            text = "사용 가능한 테마",
+            text = "스트리밍에 사용될 테마 선택",
             style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.padding(16.dp)
         )
 
         if (themes.isEmpty()) {
-            Text(
-                text = "사용 가능한 테마가 없습니다.",
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
-            )
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text("사용 가능한 테마가 없습니다.")
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Button(onClick = {
+                    // 수동으로 기본 테마 추가
+                    viewModel.insertDefaultThemes()
+                }) {
+                    Text("기본 테마 추가하기")
+                }
+            }
         } else {
             LazyColumn {
                 items(themes) { theme ->
                     ThemeSettingItem(
                         theme = theme,
+                        isSelected = theme.id == currentThemeId.value,
                         onClick = {
+                            // 전역 테마로 선택
+                            viewModel.saveGlobalThemeId(theme.id)
+                            currentThemeId.value = theme.id
+                        },
+                        onEditClick = {
                             selectedTheme = theme
                             showEditDialog = true
                         }
@@ -90,13 +96,19 @@ fun ThemeSettingsScreen(viewModel: StreamNoteViewModel, modifier: Modifier = Mod
 }
 
 @Composable
-fun ThemeSettingItem(theme: Theme, onClick: () -> Unit) {
+fun ThemeSettingItem(
+    theme: Theme,
+    isSelected: Boolean,
+    onClick: () -> Unit,
+    onEditClick: () -> Unit
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
             .clickable(onClick = onClick),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        border = if(isSelected) BorderStroke(2.dp, MaterialTheme.colorScheme.primary) else null
     ) {
         Row(
             modifier = Modifier
@@ -104,6 +116,7 @@ fun ThemeSettingItem(theme: Theme, onClick: () -> Unit) {
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
+            // 테마 색상 미리보기
             Box(
                 modifier = Modifier
                     .size(48.dp)
@@ -139,7 +152,8 @@ fun ThemeSettingItem(theme: Theme, onClick: () -> Unit) {
 
             Spacer(modifier = Modifier.width(16.dp))
 
-            Column {
+            // 테마 정보
+            Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = theme.name,
                     style = MaterialTheme.typography.titleMedium
@@ -154,20 +168,27 @@ fun ThemeSettingItem(theme: Theme, onClick: () -> Unit) {
                     text = "속도: ${theme.scrollSpeed}x · 위치: ${if(theme.position == "TOP") "상단" else "하단"}",
                     style = MaterialTheme.typography.bodyMedium
                 )
-
-                Text(
-                    text = "여백(상/하/좌우): ${theme.marginTop}/${theme.marginBottom}/${theme.marginHorizontal}dp",
-                    style = MaterialTheme.typography.bodySmall
-                )
             }
 
-            Spacer(modifier = Modifier.weight(1f))
+            // 선택 표시
+            if (isSelected) {
+                Icon(
+                    imageVector = Icons.Default.Check,
+                    contentDescription = "선택됨",
+                    tint = MaterialTheme.colorScheme.primary
+                )
 
-            Icon(
-                imageVector = Icons.Default.Edit,
-                contentDescription = "테마 편집",
-                tint = MaterialTheme.colorScheme.primary
-            )
+                Spacer(modifier = Modifier.width(8.dp))
+            }
+
+            // 편집 버튼
+            IconButton(onClick = onEditClick) {
+                Icon(
+                    imageVector = Icons.Default.Edit,
+                    contentDescription = "테마 편집",
+                    tint = MaterialTheme.colorScheme.primary
+                )
+            }
         }
     }
 }

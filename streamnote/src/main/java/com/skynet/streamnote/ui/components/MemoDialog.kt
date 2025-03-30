@@ -46,17 +46,29 @@ import java.util.Locale
 fun MemoDialog(
     memo: Memo?,
     onDismiss: () -> Unit,
-    onSave: (Memo) -> Unit,
-    viewModel: StreamNoteViewModel
+    onSave: (Memo) -> Unit
 ) {
-    val themes by viewModel.allThemes.collectAsState(initial = emptyList())
     val isNewMemo = memo == null
     val content = remember { mutableStateOf(memo?.content ?: "") }
     val isActive = remember { mutableStateOf(memo?.isActive ?: true) }
     val hasDateRange = remember { mutableStateOf(memo?.startDate != null) }
-    val startDate = remember { mutableStateOf(memo?.startDate ?: System.currentTimeMillis()) }
-    val endDate = remember { mutableStateOf(memo?.endDate ?: (System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000)) }
-    val selectedThemeId = remember { mutableStateOf(memo?.themeId ?: 0) }
+
+    // 날짜 포맷터
+    val dateFormatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+    // 시작 날짜와 종료 날짜를 String으로 변환하여 상태로 관리
+    val startDateText = remember {
+        mutableStateOf(
+            memo?.startDate?.let { dateFormatter.format(Date(it)) } ?:
+            dateFormatter.format(Date(System.currentTimeMillis()))
+        )
+    }
+    val endDateText = remember {
+        mutableStateOf(
+            memo?.endDate?.let { dateFormatter.format(Date(it)) } ?:
+            dateFormatter.format(Date(System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000))
+        )
+    }
 
     Dialog(onDismissRequest = onDismiss) {
         Surface(
@@ -105,46 +117,25 @@ fun MemoDialog(
                 }
 
                 if (hasDateRange.value) {
-                    // 날짜 선택 UI (간략하게 구현)
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Button(onClick = {
-                            // 시작 날짜 선택 다이얼로그 표시
-                            // (실제 구현 시 DatePickerDialog 사용)
-                        }) {
-                            Text("시작 날짜")
-                        }
+                    // 날짜 선택 UI
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        Text("시작 날짜:")
+                        OutlinedTextField(
+                            value = startDateText.value,
+                            onValueChange = { startDateText.value = it },
+                            modifier = Modifier.fillMaxWidth(),
+                            placeholder = { Text("yyyy-MM-dd") }
+                        )
 
-                        Button(onClick = {
-                            // 종료 날짜 선택 다이얼로그 표시
-                        }) {
-                            Text("종료 날짜")
-                        }
-                    }
+                        Spacer(modifier = Modifier.height(8.dp))
 
-                    // 선택된 날짜 표시
-                    val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                    Text(
-                        text = "${dateFormat.format(Date(startDate.value))} ~ ${dateFormat.format(Date(endDate.value))}"
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                // 테마 선택
-                if (themes.isNotEmpty()) {
-                    Text("테마 선택", style = MaterialTheme.typography.bodyLarge)
-
-                    LazyRow {
-                        items(themes) { theme ->
-                            ThemeItem(
-                                theme = theme,
-                                isSelected = theme.id == selectedThemeId.value,
-                                onClick = { selectedThemeId.value = theme.id }
-                            )
-                        }
+                        Text("종료 날짜:")
+                        OutlinedTextField(
+                            value = endDateText.value,
+                            onValueChange = { endDateText.value = it },
+                            modifier = Modifier.fillMaxWidth(),
+                            placeholder = { Text("yyyy-MM-dd") }
+                        )
                     }
                 }
 
@@ -162,13 +153,25 @@ fun MemoDialog(
 
                     Button(
                         onClick = {
+                            // 날짜 문자열을 Long 타입의 타임스탬프로 변환
+                            val startDateTimestamp = try {
+                                if (hasDateRange.value) dateFormatter.parse(startDateText.value)?.time else null
+                            } catch (e: Exception) {
+                                System.currentTimeMillis()
+                            }
+
+                            val endDateTimestamp = try {
+                                if (hasDateRange.value) dateFormatter.parse(endDateText.value)?.time else null
+                            } catch (e: Exception) {
+                                System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000
+                            }
+
                             val newMemo = Memo(
                                 id = memo?.id ?: 0,
                                 content = content.value,
                                 isActive = isActive.value,
-                                startDate = if (hasDateRange.value) startDate.value else null,
-                                endDate = if (hasDateRange.value) endDate.value else null,
-                                themeId = selectedThemeId.value,
+                                startDate = startDateTimestamp,
+                                endDate = endDateTimestamp,
                                 createdAt = memo?.createdAt ?: System.currentTimeMillis(),
                                 updatedAt = System.currentTimeMillis()
                             )
@@ -181,35 +184,5 @@ fun MemoDialog(
                 }
             }
         }
-    }
-}
-
-@Composable
-fun ThemeItem(
-    theme: Theme,
-    isSelected: Boolean,
-    onClick: () -> Unit
-) {
-    Box(
-        modifier = Modifier
-            .padding(4.dp)
-            .size(48.dp)
-            .background(
-                color = Color(theme.backgroundColor),
-                shape = RoundedCornerShape(8.dp)
-            )
-            .border(
-                width = if (isSelected) 2.dp else 0.dp,
-                color = MaterialTheme.colorScheme.primary,
-                shape = RoundedCornerShape(8.dp)
-            )
-            .clickable(onClick = onClick)
-    ) {
-        Text(
-            text = "Aa",
-            color = Color(theme.textColor),
-            fontSize = theme.textSize.sp,
-            modifier = Modifier.align(Alignment.Center)
-        )
     }
 }

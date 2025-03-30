@@ -10,7 +10,7 @@ data class Memo(
     val isActive: Boolean = true,
     val startDate: Long? = null,
     val endDate: Long? = null,
-    val themeId: Int = 0,
+    // themeId 필드 제거
     val createdAt: Long = System.currentTimeMillis(),
     val updatedAt: Long = System.currentTimeMillis()
-)
+) 

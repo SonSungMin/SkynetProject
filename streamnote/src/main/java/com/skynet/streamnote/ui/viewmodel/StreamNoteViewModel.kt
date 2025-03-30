@@ -1,6 +1,7 @@
 package com.skynet.streamnote.ui.viewmodel
 
 import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.provider.Settings
@@ -31,10 +32,14 @@ class StreamNoteViewModel(application: Application) : AndroidViewModel(applicati
         allMemos = memoRepository.getAllMemos()
         allThemes = themeRepository.getAllThemes()
 
-        // 앱 초기 실행 시 기본 테마 생성
+        // 앱 초기 실행 시 기본 테마 생성 - 비동기 로직 수정
         viewModelScope.launch {
-            if (allThemes.first().isEmpty()) {
+            val themes = allThemes.first()
+            if (themes.isEmpty()) {
                 themeRepository.insertDefaultThemes()
+                // 로그 추가
+                val themesAfterInsert = themeRepository.getAllThemes().first()
+            } else {
             }
         }
     }
@@ -88,5 +93,31 @@ class StreamNoteViewModel(application: Application) : AndroidViewModel(applicati
     // 오버레이 권한 체크
     fun hasOverlayPermission(): Boolean {
         return Settings.canDrawOverlays(getApplication())
+    }
+
+    // 전역 테마 ID 저장 함수
+    fun saveGlobalThemeId(themeId: Int) {
+        val context = getApplication<Application>()
+        val sharedPrefs = context.getSharedPreferences("streamnote_preferences", Context.MODE_PRIVATE)
+        sharedPrefs.edit().putInt("global_theme_id", themeId).apply()
+
+        // 서비스에 테마 변경 알림
+        val intent = Intent(context, MemoOverlayService::class.java).apply {
+            action = MemoOverlayService.ACTION_UPDATE_THEME
+            putExtra(MemoOverlayService.EXTRA_THEME_ID, themeId)
+        }
+        context.startService(intent)
+    }
+
+    // 저장된 전역 테마 ID 가져오기
+    fun getGlobalThemeId(): Int {
+        val context = getApplication<Application>()
+        val sharedPrefs = context.getSharedPreferences("streamnote_preferences", Context.MODE_PRIVATE)
+        return sharedPrefs.getInt("global_theme_id", 1) // 기본값 1 (첫 번째 테마)
+    }
+
+    // 기본 테마 수동 추가 함수
+    fun insertDefaultThemes() = viewModelScope.launch {
+        themeRepository.insertDefaultThemes()
     }
 }
