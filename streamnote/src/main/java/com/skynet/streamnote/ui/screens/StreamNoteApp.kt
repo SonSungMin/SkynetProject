@@ -19,6 +19,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.skynet.streamnote.R
 import com.skynet.streamnote.ui.components.BannerAdView
 import com.skynet.streamnote.ui.viewmodel.StreamNoteViewModel
 
@@ -26,13 +28,16 @@ import com.skynet.streamnote.ui.viewmodel.StreamNoteViewModel
 @Composable
 fun StreamNoteApp(viewModel: StreamNoteViewModel) {
     var selectedTab by remember { mutableStateOf(0) }
-    val tabs = listOf("메모 목록", "테마 설정")
+    val tabs = listOf(
+        stringResource(R.string.memo_list),
+        stringResource(R.string.theme_settings)
+    )
     val serviceRunning = remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("StreamNote") },
+                title = { Text(stringResource(R.string.app_name)) },
                 actions = {
                     Switch(
                         checked = serviceRunning.value,

@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">StreamNote</string>
+    <!-- メモ関連の文字列 -->
+    <string name="no_memos">メモがありません。＋ボタンを押して新しいメモを追加してください。</string>
+    <string name="new_memo">新規メモ</string>
+    <string name="edit_memo">メモを編集</string>
+    <string name="memo_content">メモ内容</string>
+    <string name="activate">有効化</string>
+    <string name="set_display_period">表示期間を設定</string>
+    <string name="start_date">開始日：</string>
+    <string name="end_date">終了日：</string>
+    <string name="active_period">有効期間: %1$s 〜 %2$s</string>
+    <string name="cancel">キャンセル</string>
+    <string name="save">保存</string>
+    <string name="delete">削除</string>
+
+    <!-- オーバーレイサービス関連 -->
+    <string name="no_memo_to_display">表示するメモがありません</string>
+    <string name="overlay_content">メモ内容がここに表示されます</string>
+    <string name="service_running">StreamNote 実行中</string>
+    <string name="service_description">メモが画面に表示されています</string>
+
+    <!-- タブメニュー -->
+    <string name="memo_list">メモリスト</string>
+    <string name="theme_settings">テーマ設定</string>
+
+    <!-- テーマ設定関連 -->
+    <string name="select_theme">ストリーミングに使用するテーマを選択</string>
+    <string name="no_themes">利用可能なテーマがありません。</string>
+    <string name="add_default_themes">デフォルトテーマを追加</string>
+    <string name="edit_theme">テーマを編集</string>
+    <string name="theme_name">テーマ名</string>
+    <string name="text_color">テキストカラー:</string>
+    <string name="font_size">フォントサイズ: %1$d%2$s</string>
+    <string name="font_family">フォントファミリー</string>
+    <string name="bold">太字</string>
+    <string name="italic">斜体</string>
+    <string name="scroll_speed">スクロール速度: %1$.1fx</string>
+    <string name="preview">プレビュー:</string>
+    <string name="text_position">テキスト表示位置:</string>
+    <string name="position_top">上部</string>
+    <string name="position_bottom">下部</string>
+    <string name="margin_settings">余白設定:</string>
+    <string name="top_margin">上部余白: %1$ddp</string>
+    <string name="bottom_margin">下部余白: %1$ddp</string>
+    <string name="horizontal_margin">水平余白: %1$ddp</string>
+    <string name="preview_text">StreamNote プレビューテキスト</string>
+    <string name="speed_position">速度: %1$.1fx · 位置: %2$s</string>
+    <string name="position_top_short">上部</string>
+    <string name="position_bottom_short">下部</string>
+</resources>

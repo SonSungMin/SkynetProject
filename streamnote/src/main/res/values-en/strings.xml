@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">StreamNote</string>
+    <!-- Memo related strings -->
+    <string name="no_memos">No memos. Press + button to add a new memo.</string>
+    <string name="new_memo">New Memo</string>
+    <string name="edit_memo">Edit Memo</string>
+    <string name="memo_content">Memo Content</string>
+    <string name="activate">Activate</string>
+    <string name="set_display_period">Set Display Period</string>
+    <string name="start_date">Start Date:</string>
+    <string name="end_date">End Date:</string>
+    <string name="active_period">Active Period: %1$s ~ %2$s</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+
+    <!-- Overlay service related -->
+    <string name="no_memo_to_display">No memo to display</string>
+    <string name="overlay_content">Memo content will appear here</string>
+    <string name="service_running">StreamNote Running</string>
+    <string name="service_description">Memos are being displayed on screen</string>
+
+    <!-- Tab menu -->
+    <string name="memo_list">Memo List</string>
+    <string name="theme_settings">Theme Settings</string>
+
+    <!-- Theme settings related -->
+    <string name="select_theme">Select theme to use for streaming</string>
+    <string name="no_themes">No themes available.</string>
+    <string name="add_default_themes">Add Default Themes</string>
+    <string name="edit_theme">Edit Theme</string>
+    <string name="theme_name">Theme Name</string>
+    <string name="text_color">Text Color:</string>
+    <string name="font_size">Font Size: %1$d%2$s</string>
+    <string name="font_family">Font Family</string>
+    <string name="bold">Bold</string>
+    <string name="italic">Italic</string>
+    <string name="scroll_speed">Scroll Speed: %1$.1fx</string>
+    <string name="preview">Preview:</string>
+    <string name="text_position">Text Display Position:</string>
+    <string name="position_top">Top</string>
+    <string name="position_bottom">Bottom</string>
+    <string name="margin_settings">Margin Settings:</string>
+    <string name="top_margin">Top Margin: %1$ddp</string>
+    <string name="bottom_margin">Bottom Margin: %1$ddp</string>
+    <string name="horizontal_margin">Horizontal Margin: %1$ddp</string>
+    <string name="preview_text">StreamNote Preview Text</string>
+    <string name="speed_position">Speed: %1$.1fx · Position: %2$s</string>
+    <string name="position_top_short">Top</string>
+    <string name="position_bottom_short">Bottom</string>
+</resources>

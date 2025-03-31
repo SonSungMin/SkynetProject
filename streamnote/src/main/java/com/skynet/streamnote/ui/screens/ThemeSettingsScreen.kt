@@ -17,12 +17,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.skynet.streamnote.R
 import com.skynet.streamnote.data.entity.Theme
 import com.skynet.streamnote.ui.components.ThemeEditDialog
 import com.skynet.streamnote.ui.viewmodel.StreamNoteViewModel
@@ -39,7 +41,7 @@ fun ThemeSettingsScreen(viewModel: StreamNoteViewModel, modifier: Modifier = Mod
 
     Column(modifier = modifier.fillMaxSize()) {
         Text(
-            text = "스트리밍에 사용될 테마 선택",
+            text = stringResource(R.string.select_theme),
             style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.padding(16.dp)
         )
@@ -51,7 +53,7 @@ fun ThemeSettingsScreen(viewModel: StreamNoteViewModel, modifier: Modifier = Mod
                     .padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text("사용 가능한 테마가 없습니다.")
+                Text(stringResource(R.string.no_themes))
 
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -59,7 +61,7 @@ fun ThemeSettingsScreen(viewModel: StreamNoteViewModel, modifier: Modifier = Mod
                     // 수동으로 기본 테마 추가
                     viewModel.insertDefaultThemes()
                 }) {
-                    Text("기본 테마 추가하기")
+                    Text(stringResource(R.string.add_default_themes))
                 }
             }
         } else {
@@ -159,13 +161,20 @@ fun ThemeSettingItem(
                     style = MaterialTheme.typography.titleMedium
                 )
 
+                val boldText = if(theme.isBold) stringResource(R.string.bold) else ""
+                val italicText = if(theme.isItalic) stringResource(R.string.italic) else ""
                 Text(
-                    text = "${theme.fontFamily} ${if(theme.isBold) "굵게" else ""} ${if(theme.isItalic) "기울임" else ""}".trim(),
+                    text = "${theme.fontFamily} $boldText $italicText".trim(),
                     style = MaterialTheme.typography.bodyMedium
                 )
 
+                val positionText = if(theme.position == "TOP")
+                    stringResource(R.string.position_top_short)
+                else
+                    stringResource(R.string.position_bottom_short)
+
                 Text(
-                    text = "속도: ${theme.scrollSpeed}x · 위치: ${if(theme.position == "TOP") "상단" else "하단"}",
+                    text = stringResource(R.string.speed_position, theme.scrollSpeed, positionText),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
@@ -174,7 +183,7 @@ fun ThemeSettingItem(
             if (isSelected) {
                 Icon(
                     imageVector = Icons.Default.Check,
-                    contentDescription = "선택됨",
+                    contentDescription = null,
                     tint = MaterialTheme.colorScheme.primary
                 )
 
@@ -185,7 +194,7 @@ fun ThemeSettingItem(
             IconButton(onClick = onEditClick) {
                 Icon(
                     imageVector = Icons.Default.Edit,
-                    contentDescription = "테마 편집",
+                    contentDescription = stringResource(R.string.edit_theme),
                     tint = MaterialTheme.colorScheme.primary
                 )
             }

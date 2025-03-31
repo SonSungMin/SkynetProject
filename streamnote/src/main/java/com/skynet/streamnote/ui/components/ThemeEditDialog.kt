@@ -41,6 +41,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -48,6 +49,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import com.skynet.streamnote.R
 import com.skynet.streamnote.data.entity.Theme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -89,7 +91,7 @@ fun ThemeEditDialog(
                     .verticalScroll(rememberScrollState())
             ) {
                 Text(
-                    text = "테마 편집",
+                    text = stringResource(R.string.edit_theme),
                     style = MaterialTheme.typography.titleLarge
                 )
 
@@ -98,7 +100,7 @@ fun ThemeEditDialog(
                 OutlinedTextField(
                     value = name.value,
                     onValueChange = { name.value = it },
-                    label = { Text("테마 이름") },
+                    label = { Text(stringResource(R.string.theme_name)) },
                     modifier = Modifier.fillMaxWidth()
                 )
 
@@ -109,7 +111,7 @@ fun ThemeEditDialog(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("텍스트 색상:", modifier = Modifier.width(120.dp))
+                    Text(stringResource(R.string.text_color), modifier = Modifier.width(120.dp))
 
                     // 미리 정의된 색상 옵션들
                     ColorOption(
@@ -147,7 +149,7 @@ fun ThemeEditDialog(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 // 폰트 크기 슬라이더
-                Text("폰트 크기: ${textSize.value.toInt()}sp")
+                Text(stringResource(R.string.font_size, textSize.value.toInt(), "sp"))
                 Slider(
                     value = textSize.value,
                     onValueChange = { textSize.value = it },
@@ -168,7 +170,7 @@ fun ThemeEditDialog(
                         value = fontFamily.value,
                         onValueChange = {},
                         readOnly = true,
-                        label = { Text("폰트 패밀리") },
+                        label = { Text(stringResource(R.string.font_family)) },
                         trailingIcon = {
                             ExposedDropdownMenuDefaults.TrailingIcon(expanded = expandedFontFamily)
                         },
@@ -201,7 +203,7 @@ fun ThemeEditDialog(
                         checked = isBold.value,
                         onCheckedChange = { isBold.value = it }
                     )
-                    Text("굵게")
+                    Text(stringResource(R.string.bold))
 
                     Spacer(modifier = Modifier.width(16.dp))
 
@@ -209,13 +211,13 @@ fun ThemeEditDialog(
                         checked = isItalic.value,
                         onCheckedChange = { isItalic.value = it }
                     )
-                    Text("기울임")
+                    Text(stringResource(R.string.italic))
                 }
 
                 Spacer(modifier = Modifier.height(8.dp))
 
                 // 스크롤 속도 슬라이더
-                Text("스크롤 속도: ${scrollSpeed.value}x")
+                Text(stringResource(R.string.scroll_speed, scrollSpeed.value))
                 Slider(
                     value = scrollSpeed.value,
                     onValueChange = { scrollSpeed.value = it },
@@ -227,7 +229,7 @@ fun ThemeEditDialog(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // 미리보기
-                Text("미리보기:", style = MaterialTheme.typography.titleMedium)
+                Text(stringResource(R.string.preview), style = MaterialTheme.typography.titleMedium)
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -254,7 +256,7 @@ fun ThemeEditDialog(
                     }
 
                     Text(
-                        text = "StreamNote 미리보기 텍스트",
+                        text = stringResource(R.string.preview_text),
                         color = Color(textColor.value),
                         fontSize = textSize.value.sp,
                         fontFamily = previewFontFamily,
@@ -266,7 +268,7 @@ fun ThemeEditDialog(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // 위치 선택 (위/아래)
-                Text("텍스트 표시 위치:", style = MaterialTheme.typography.bodyLarge)
+                Text(stringResource(R.string.text_position), style = MaterialTheme.typography.bodyLarge)
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -276,7 +278,7 @@ fun ThemeEditDialog(
                         selected = position.value == "TOP",
                         onClick = { position.value = "TOP" }
                     )
-                    Text("상단")
+                    Text(stringResource(R.string.position_top))
 
                     Spacer(modifier = Modifier.width(16.dp))
 
@@ -284,16 +286,16 @@ fun ThemeEditDialog(
                         selected = position.value == "BOTTOM",
                         onClick = { position.value = "BOTTOM" }
                     )
-                    Text("하단")
+                    Text(stringResource(R.string.position_bottom))
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // 여백 설정
-                Text("여백 설정:", style = MaterialTheme.typography.bodyLarge)
+                Text(stringResource(R.string.margin_settings), style = MaterialTheme.typography.bodyLarge)
 
                 // 상단 여백
-                Text("상단 여백: ${marginTop.value}dp")
+                Text(stringResource(R.string.top_margin, marginTop.value))
                 Slider(
                     value = marginTop.value.toFloat(),
                     onValueChange = { marginTop.value = it.toInt() },
@@ -303,7 +305,7 @@ fun ThemeEditDialog(
                 )
 
                 // 하단 여백
-                Text("하단 여백: ${marginBottom.value}dp")
+                Text(stringResource(R.string.bottom_margin, marginBottom.value))
                 Slider(
                     value = marginBottom.value.toFloat(),
                     onValueChange = { marginBottom.value = it.toInt() },
@@ -313,7 +315,7 @@ fun ThemeEditDialog(
                 )
 
                 // 좌우 여백
-                Text("좌우 여백: ${marginHorizontal.value}dp")
+                Text(stringResource(R.string.horizontal_margin, marginHorizontal.value))
                 Slider(
                     value = marginHorizontal.value.toFloat(),
                     onValueChange = { marginHorizontal.value = it.toInt() },
@@ -322,8 +324,6 @@ fun ThemeEditDialog(
                     modifier = Modifier.fillMaxWidth()
                 )
 
-
-
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Row(
@@ -331,7 +331,7 @@ fun ThemeEditDialog(
                     horizontalArrangement = Arrangement.End
                 ) {
                     TextButton(onClick = onDismiss) {
-                        Text("취소")
+                        Text(stringResource(R.string.cancel))
                     }
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -355,7 +355,7 @@ fun ThemeEditDialog(
                             onSave(updatedTheme)
                         }
                     ) {
-                        Text("저장")
+                        Text(stringResource(R.string.save))
                     }
                 }
             }

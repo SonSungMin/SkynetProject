@@ -138,7 +138,7 @@ class MemoOverlayService : Service() {
 
     private fun updateOverlayContent() {
         if (currentMemos.isEmpty()) {
-            overlayView?.findViewById<TextView>(R.id.overlayTextView)?.text = "표시할 메모가 없습니다"
+            overlayView?.findViewById<TextView>(R.id.overlayTextView)?.text = getString(R.string.no_memo_to_display)
             return
         }
 
@@ -277,8 +277,8 @@ class MemoOverlayService : Service() {
         )
 
         val notification = NotificationCompat.Builder(this, "overlay_service_channel")
-            .setContentTitle("StreamNote 실행 중")
-            .setContentText("메모가 화면에 표시되고 있습니다")
+            .setContentTitle(getString(R.string.service_running))
+            .setContentText(getString(R.string.service_description))
             .setSmallIcon(R.drawable.ic_notification)
             .setContentIntent(pendingIntent)
             .build()

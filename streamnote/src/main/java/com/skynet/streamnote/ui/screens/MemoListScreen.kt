@@ -38,9 +38,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import com.skynet.streamnote.R
 import com.skynet.streamnote.data.entity.Memo
 import com.skynet.streamnote.data.entity.Theme
 import com.skynet.streamnote.ui.components.MemoDialog
@@ -59,7 +61,7 @@ fun MemoListScreen(viewModel: StreamNoteViewModel, modifier: Modifier = Modifier
     Box(modifier = modifier.fillMaxSize()) {
         if (memos.isEmpty()) {
             Text(
-                text = "메모가 없습니다. + 버튼을 눌러 새 메모를 추가하세요.",
+                text = stringResource(R.string.no_memos),
                 modifier = Modifier.align(Alignment.Center)
             )
         } else {
@@ -92,7 +94,7 @@ fun MemoListScreen(viewModel: StreamNoteViewModel, modifier: Modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(16.dp)
         ) {
-            Icon(Icons.Default.Add, contentDescription = "새 메모 추가")
+            Icon(Icons.Default.Add, contentDescription = stringResource(R.string.new_memo))
         }
     }
 

@@ -18,8 +18,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.skynet.streamnote.R
 import com.skynet.streamnote.data.entity.Memo
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -59,11 +61,11 @@ fun MemoItem(
                     )
 
                     IconButton(onClick = onEditClick) {
-                        Icon(Icons.Default.Edit, contentDescription = "수정")
+                        Icon(Icons.Default.Edit, contentDescription = stringResource(R.string.edit_memo))
                     }
 
                     IconButton(onClick = onDeleteClick) {
-                        Icon(Icons.Default.Delete, contentDescription = "삭제")
+                        Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.delete))
                     }
                 }
             }
@@ -73,7 +75,11 @@ fun MemoItem(
                 memo.endDate?.let { end ->
                     val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                     Text(
-                        text = "활성 기간: ${dateFormat.format(Date(start))} ~ ${dateFormat.format(Date(end))}",
+                        text = stringResource(
+                            R.string.active_period,
+                            dateFormat.format(Date(start)),
+                            dateFormat.format(Date(end))
+                        ),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )

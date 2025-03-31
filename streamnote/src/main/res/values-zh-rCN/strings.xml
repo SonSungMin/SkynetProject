@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">StreamNote</string>
+    <!-- 备忘录相关字符串 -->
+    <string name="no_memos">没有备忘录。按+按钮添加新备忘录。</string>
+    <string name="new_memo">新备忘录</string>
+    <string name="edit_memo">编辑备忘录</string>
+    <string name="memo_content">备忘录内容</string>
+    <string name="activate">激活</string>
+    <string name="set_display_period">设置显示期间</string>
+    <string name="start_date">开始日期：</string>
+    <string name="end_date">结束日期：</string>
+    <string name="active_period">活动期间: %1$s ~ %2$s</string>
+    <string name="cancel">取消</string>
+    <string name="save">保存</string>
+    <string name="delete">删除</string>
+
+    <!-- 悬浮窗服务相关 -->
+    <string name="no_memo_to_display">没有要显示的备忘录</string>
+    <string name="overlay_content">备忘录内容将在此处显示</string>
+    <string name="service_running">StreamNote 运行中</string>
+    <string name="service_description">备忘录正在屏幕上显示</string>
+
+    <!-- 标签菜单 -->
+    <string name="memo_list">备忘录列表</string>
+    <string name="theme_settings">主题设置</string>
+
+    <!-- 主题设置相关 -->
+    <string name="select_theme">选择用于流媒体的主题</string>
+    <string name="no_themes">没有可用的主题。</string>
+    <string name="add_default_themes">添加默认主题</string>
+    <string name="edit_theme">编辑主题</string>
+    <string name="theme_name">主题名称</string>
+    <string name="text_color">文本颜色：</string>
+    <string name="font_size">字体大小: %1$d%2$s</string>
+    <string name="font_family">字体系列</string>
+    <string name="bold">粗体</string>
+    <string name="italic">斜体</string>
+    <string name="scroll_speed">滚动速度: %1$.1fx</string>
+    <string name="preview">预览：</string>
+    <string name="text_position">文本显示位置：</string>
+    <string name="position_top">顶部</string>
+    <string name="position_bottom">底部</string>
+    <string name="margin_settings">边距设置：</string>
+    <string name="top_margin">顶部边距: %1$ddp</string>
+    <string name="bottom_margin">底部边距: %1$ddp</string>
+    <string name="horizontal_margin">水平边距: %1$ddp</string>
+    <string name="preview_text">StreamNote 预览文本</string>
+    <string name="speed_position">速度: %1$.1fx · 位置: %2$s</string>
+    <string name="position_top_short">顶部</string>
+    <string name="position_bottom_short">底部</string>
+</resources>

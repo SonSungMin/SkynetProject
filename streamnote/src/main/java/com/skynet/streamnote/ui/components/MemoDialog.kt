@@ -32,9 +32,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import com.skynet.streamnote.R
 import com.skynet.streamnote.data.entity.Memo
 import com.skynet.streamnote.data.entity.Theme
 import com.skynet.streamnote.ui.viewmodel.StreamNoteViewModel
@@ -81,7 +83,7 @@ fun MemoDialog(
                     .fillMaxWidth()
             ) {
                 Text(
-                    text = if (isNewMemo) "새 메모" else "메모 수정",
+                    text = stringResource(if (isNewMemo) R.string.new_memo else R.string.edit_memo),
                     style = MaterialTheme.typography.titleLarge
                 )
 
@@ -90,7 +92,7 @@ fun MemoDialog(
                 OutlinedTextField(
                     value = content.value,
                     onValueChange = { content.value = it },
-                    label = { Text("메모 내용") },
+                    label = { Text(stringResource(R.string.memo_content)) },
                     modifier = Modifier.fillMaxWidth()
                 )
 
@@ -103,7 +105,7 @@ fun MemoDialog(
                         checked = isActive.value,
                         onCheckedChange = { isActive.value = it }
                     )
-                    Text("활성화")
+                    Text(stringResource(R.string.activate))
                 }
 
                 Row(
@@ -113,13 +115,13 @@ fun MemoDialog(
                         checked = hasDateRange.value,
                         onCheckedChange = { hasDateRange.value = it }
                     )
-                    Text("표시 기간 설정")
+                    Text(stringResource(R.string.set_display_period))
                 }
 
                 if (hasDateRange.value) {
                     // 날짜 선택 UI
                     Column(modifier = Modifier.fillMaxWidth()) {
-                        Text("시작 날짜:")
+                        Text(stringResource(R.string.start_date))
                         OutlinedTextField(
                             value = startDateText.value,
                             onValueChange = { startDateText.value = it },
@@ -129,7 +131,7 @@ fun MemoDialog(
 
                         Spacer(modifier = Modifier.height(8.dp))
 
-                        Text("종료 날짜:")
+                        Text(stringResource(R.string.end_date))
                         OutlinedTextField(
                             value = endDateText.value,
                             onValueChange = { endDateText.value = it },
@@ -146,7 +148,7 @@ fun MemoDialog(
                     horizontalArrangement = Arrangement.End
                 ) {
                     TextButton(onClick = onDismiss) {
-                        Text("취소")
+                        Text(stringResource(R.string.cancel))
                     }
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -179,7 +181,7 @@ fun MemoDialog(
                         },
                         enabled = content.value.isNotEmpty()
                     ) {
-                        Text("저장")
+                        Text(stringResource(R.string.save))
                     }
                 }
             }
