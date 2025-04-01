@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -36,13 +37,24 @@ fun ThemeSettingsScreen(viewModel: StreamNoteViewModel, modifier: Modifier = Mod
     var selectedTheme by remember { mutableStateOf<Theme?>(null) }
     var showEditDialog by remember { mutableStateOf(false) }
 
+    // 기능별 색상 정의
+    val primaryColor = colorResource(id = R.color.primary)
+    val backgroundColor = colorResource(id = R.color.background)
+    val onBackgroundColor = colorResource(id = R.color.on_background)
+    val onPrimaryColor = colorResource(id = R.color.on_primary)
+
     // 로그 추가
     Log.d("ThemeSettingsScreen", "테마 개수: ${themes.size}")
 
-    Column(modifier = modifier.fillMaxSize()) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(backgroundColor)
+    ) {
         Text(
             text = stringResource(R.string.select_theme),
             style = MaterialTheme.typography.titleLarge,
+            color = primaryColor,
             modifier = Modifier.padding(16.dp)
         )
 
@@ -53,14 +65,23 @@ fun ThemeSettingsScreen(viewModel: StreamNoteViewModel, modifier: Modifier = Mod
                     .padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(stringResource(R.string.no_themes))
+                Text(
+                    stringResource(R.string.no_themes),
+                    color = onBackgroundColor
+                )
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Button(onClick = {
-                    // 수동으로 기본 테마 추가
-                    viewModel.insertDefaultThemes()
-                }) {
+                Button(
+                    onClick = {
+                        // 수동으로 기본 테마 추가
+                        viewModel.insertDefaultThemes()
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = primaryColor,
+                        contentColor = onPrimaryColor
+                    )
+                ) {
                     Text(stringResource(R.string.add_default_themes))
                 }
             }
@@ -104,13 +125,21 @@ fun ThemeSettingItem(
     onClick: () -> Unit,
     onEditClick: () -> Unit
 ) {
+    val primaryColor = colorResource(id = R.color.primary)
+    val surfaceColor = colorResource(id = R.color.surface)
+    val onSurfaceColor = colorResource(id = R.color.on_surface)
+    val onSurfaceVariantColor = colorResource(id = R.color.on_surface_variant)
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
             .clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        border = if(isSelected) BorderStroke(2.dp, MaterialTheme.colorScheme.primary) else null
+        border = if(isSelected) BorderStroke(2.dp, primaryColor) else null,
+        colors = CardDefaults.cardColors(
+            containerColor = surfaceColor
+        )
     ) {
         Row(
             modifier = Modifier
@@ -158,14 +187,16 @@ fun ThemeSettingItem(
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = theme.name,
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.titleMedium,
+                    color = onSurfaceColor
                 )
 
                 val boldText = if(theme.isBold) stringResource(R.string.bold) else ""
                 val italicText = if(theme.isItalic) stringResource(R.string.italic) else ""
                 Text(
                     text = "${theme.fontFamily} $boldText $italicText".trim(),
-                    style = MaterialTheme.typography.bodyMedium
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = onSurfaceVariantColor
                 )
 
                 val positionText = if(theme.position == "TOP")
@@ -175,7 +206,8 @@ fun ThemeSettingItem(
 
                 Text(
                     text = stringResource(R.string.speed_position, theme.scrollSpeed, positionText),
-                    style = MaterialTheme.typography.bodyMedium
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = onSurfaceVariantColor
                 )
             }
 
@@ -184,7 +216,7 @@ fun ThemeSettingItem(
                 Icon(
                     imageVector = Icons.Default.Check,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary
+                    tint = primaryColor
                 )
 
                 Spacer(modifier = Modifier.width(8.dp))
@@ -195,7 +227,7 @@ fun ThemeSettingItem(
                 Icon(
                     imageVector = Icons.Default.Edit,
                     contentDescription = stringResource(R.string.edit_theme),
-                    tint = MaterialTheme.colorScheme.primary
+                    tint = primaryColor
                 )
             }
         }

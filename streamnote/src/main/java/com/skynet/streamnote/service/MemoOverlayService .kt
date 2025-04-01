@@ -4,7 +4,6 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -24,6 +23,7 @@ import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import com.skynet.streamnote.R
 import com.skynet.streamnote.data.AppDatabase
 import com.skynet.streamnote.data.entity.Memo
@@ -45,10 +45,6 @@ class MemoOverlayService : Service() {
     private var currentMemoIndex = 0
     private var currentTheme: Theme? = null
     private var animation: ObjectAnimator? = null
-
-    //companion object {
-    //    private const val NOTIFICATION_ID = 1001
-    //}
 
     companion object {
         const val ACTION_UPDATE_THEME = "com.skynet.streamnote.ACTION_UPDATE_THEME"
@@ -124,8 +120,14 @@ class MemoOverlayService : Service() {
         // 창 관리자에 뷰 추가
         windowManager?.addView(overlayView, params)
 
-        // 오버레이 컨테이너에 여백 적용
+        // 오버레이 컨테이너 스타일 적용
         val container = overlayView?.findViewById<LinearLayout>(R.id.overlayContainer)
+
+        // 배경색 적용 (테마에서 가져오거나 기본값 사용)
+        val backgroundColor = currentTheme?.backgroundColor ?:
+        ContextCompat.getColor(this, R.color.primary) and 0x00FFFFFF or 0xC0000000.toInt()
+
+        container?.setBackgroundColor(backgroundColor)
         container?.setPadding(
             (marginHorizontal * density).toInt(),
             0,
@@ -229,17 +231,21 @@ class MemoOverlayService : Service() {
         textView.post {
             val textWidth = textView.width.toFloat()
 
-            // 애니메이션 설정
+            // 애니메이션 설정 - 화면 오른쪽에서 왼쪽으로 이동
             animation = ObjectAnimator.ofFloat(textView, "translationX", screenWidth.toFloat(), -textWidth).apply {
                 this.duration = duration
                 interpolator = LinearInterpolator()
-                repeatCount = ValueAnimator.INFINITE
+                // 무한반복 대신 한 번만 실행
+                repeatCount = 0
 
+                // 애니메이션이 끝나면 다음 메모로 넘어감
                 addListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationRepeat(animation: Animator) {
-                        super.onAnimationRepeat(animation)
-                        // 애니메이션 반복 시 다음 메모로 넘어감
+                    override fun onAnimationEnd(animation: Animator) {
+                        super.onAnimationEnd(animation)
+                        // 다음 메모로 넘어감
                         updateOverlayContent()
+                        // 새 메모로 애니메이션 다시 시작
+                        startScrollingAnimation()
                     }
                 })
 
@@ -276,17 +282,18 @@ class MemoOverlayService : Service() {
                 0
         )
 
+        val primaryColor = ContextCompat.getColor(this, R.color.primary)
+
         val notification = NotificationCompat.Builder(this, "overlay_service_channel")
             .setContentTitle(getString(R.string.service_running))
             .setContentText(getString(R.string.service_description))
             .setSmallIcon(R.drawable.ic_notification)
             .setContentIntent(pendingIntent)
+            .setColor(primaryColor)
             .build()
 
         startForeground(NOTIFICATION_ID, notification)
     }
-
-
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         intent?.let {

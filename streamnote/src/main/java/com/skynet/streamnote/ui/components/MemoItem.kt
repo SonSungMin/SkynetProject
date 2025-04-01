@@ -14,10 +14,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -34,11 +36,21 @@ fun MemoItem(
     onEditClick: () -> Unit,
     onDeleteClick: () -> Unit
 ) {
+    val primaryColor = colorResource(id = R.color.primary)
+    val outlineColor = colorResource(id = R.color.outline)
+    val surfaceColor = colorResource(id = R.color.surface)
+    val disabledColor = colorResource(id = R.color.disabled)
+    val onSurfaceColor = colorResource(id = R.color.on_surface)
+    val onSurfaceVariantColor = colorResource(id = R.color.on_surface_variant)
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = surfaceColor
+        )
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Row(
@@ -49,6 +61,7 @@ fun MemoItem(
                 Text(
                     text = memo.content,
                     style = MaterialTheme.typography.bodyLarge,
+                    color = onSurfaceColor,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.weight(1f)
@@ -57,15 +70,29 @@ fun MemoItem(
                 Row {
                     Switch(
                         checked = memo.isActive,
-                        onCheckedChange = { onToggleActive() }
+                        onCheckedChange = { onToggleActive() },
+                        colors = SwitchDefaults.colors(
+                            checkedThumbColor = surfaceColor,
+                            checkedTrackColor = primaryColor,
+                            uncheckedThumbColor = surfaceColor,
+                            uncheckedTrackColor = disabledColor
+                        )
                     )
 
                     IconButton(onClick = onEditClick) {
-                        Icon(Icons.Default.Edit, contentDescription = stringResource(R.string.edit_memo))
+                        Icon(
+                            Icons.Default.Edit,
+                            contentDescription = stringResource(R.string.edit_memo),
+                            tint = primaryColor
+                        )
                     }
 
                     IconButton(onClick = onDeleteClick) {
-                        Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.delete))
+                        Icon(
+                            Icons.Default.Delete,
+                            contentDescription = stringResource(R.string.delete),
+                            tint = primaryColor
+                        )
                     }
                 }
             }
@@ -81,7 +108,7 @@ fun MemoItem(
                             dateFormat.format(Date(end))
                         ),
                         style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = onSurfaceVariantColor
                     )
                 }
             }
