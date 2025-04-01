@@ -48,4 +48,23 @@
     <string name="speed_position">速度: %1$.1fx · 位置: %2$s</string>
     <string name="position_top_short">顶部</string>
     <string name="position_bottom_short">底部</string>
+
+    <!-- 日历相关 -->
+    <string name="calendar_permission_required">需要日历访问权限</string>
+    <string name="request_permission">请求权限</string>
+    <string name="calendar_sync">日历同步</string>
+    <string name="auto_sync_calendar">自动将日历事件同步到备忘录</string>
+    <string name="sync_description">新备忘录也会添加到日历中</string>
+    <string name="import_calendar_events">从日历导入事件</string>
+    <string name="calendar_title">日历</string>
+    <string name="selected_date_events">所选日期的事件</string>
+    <string name="no_events">没有事件。</string>
+    <string name="import_dialog_title">从日历导入事件</string>
+    <string name="select_period">选择要导入的时间段</string>
+    <string name="start_date_format">开始日期: %1$s</string>
+    <string name="end_date_format">结束日期: %1$s</string>
+    <string name="import_events">导入事件</string>
+    <string name="importing_events">正在导入事件…</string>
+    <string name="confirm">确认</string>
+    <string name="sync_with_calendar">添加为Google日历事件</string>
 </resources>
