@@ -11,12 +11,15 @@
     <color name="purple_100">#E1BEE7</color>
     <color name="purple_900">#4A148C</color>
 
+    <color name="memo_list_background">#3F4862</color>
+    <color name="theme_settings_background">#E3F2FD</color>
+
     <!-- 기능별 의미 있는 이름으로 변경된 색상 -->
     <color name="primary">#3F4862</color>              <!-- 진한 회색 - 주요 색상 -->
     <color name="secondary">#9CCDFF</color>            <!-- 연한 파란색 - 보조 색상 -->
     <color name="background">#FFFFFF</color>           <!-- 연한 파란색 - 배경 색상 -->
     <color name="surface">#FFFFFF</color>              <!-- 흰색 - 표면 색상 -->
-    <color name="surface_variant">#E7E7E7</color>      <!-- 연한 회색 - 대체 표면 색상 -->
+    <color name="surface_variant">#FFFFFF</color>      <!-- 연한 회색 - 대체 표면 색상 -->
     <color name="on_primary">#FFFFFF</color>           <!-- 흰색 - 주요 색상 위 텍스트 -->
     <color name="on_secondary">#333333</color>         <!-- 진한 텍스트 - 보조 색상 위 텍스트 -->
     <color name="on_background">#333333</color>        <!-- 진한 텍스트 - 배경 위 텍스트 -->

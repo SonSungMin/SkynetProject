@@ -49,22 +49,12 @@
     <string name="position_top_short">상단</string>
     <string name="position_bottom_short">하단</string>
 
-    <!-- 캘린더 관련 문자열 -->
-    <string name="calendar_permission_required">캘린더 접근 권한이 필요합니다</string>
-    <string name="request_permission">권한 요청하기</string>
-    <string name="calendar_sync">캘린더 연동</string>
-    <string name="auto_sync_calendar">캘린더 일정을 자동으로 메모에 동기화</string>
-    <string name="sync_description">새 메모 생성 시 캘린더에도 추가됩니다</string>
-    <string name="import_calendar_events">캘린더에서 일정 가져오기</string>
-    <string name="calendar_title">캘린더</string>
-    <string name="selected_date_events">선택된 날짜의 일정</string>
-    <string name="no_events">일정이 없습니다.</string>
-    <string name="import_dialog_title">캘린더에서 일정 가져오기</string>
-    <string name="select_period">가져올 기간을 선택하세요</string>
-    <string name="start_date_format">시작 날짜: %1$s</string>
-    <string name="end_date_format">종료 날짜: %1$s</string>
-    <string name="import_events">일정 가져오기</string>
-    <string name="importing_events">일정을 가져오는 중입니다…</string>
-    <string name="confirm">확인</string>
-    <string name="sync_with_calendar">구글 캘린더에 일정으로 추가</string>
+    <!-- 캘린더 가져오기 관련 -->
+    <string name="import_calendar">Google 캘린더 가져오기</string>
+    <string name="import_calendar_events">구글 캘린더 일정 가져오기</string>
+    <string name="import_days_range">향후 %d일 동안의 일정 가져오기</string>
+    <string name="import_button">가져오기</string>
+    <string name="permission_required">권한 필요</string>
+    <string name="calendar_permission_explanation">캘린더 일정을 가져오려면 캘린더 접근 권한이 필요합니다.</string>
+    <string name="request_again">다시 요청</string>
 </resources>

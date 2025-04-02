@@ -49,22 +49,12 @@
     <string name="position_top_short">Top</string>
     <string name="position_bottom_short">Bottom</string>
 
-    <!-- Calendar related strings -->
-    <string name="calendar_permission_required">Calendar access permission is required</string>
-    <string name="request_permission">Request Permission</string>
-    <string name="calendar_sync">Calendar Sync</string>
-    <string name="auto_sync_calendar">Automatically sync calendar events to memos</string>
-    <string name="sync_description">New memos will also be added to calendar</string>
-    <string name="import_calendar_events">Import events from calendar</string>
-    <string name="calendar_title">Calendar</string>
-    <string name="selected_date_events">Events for selected date</string>
-    <string name="no_events">No events.</string>
-    <string name="import_dialog_title">Import events from calendar</string>
-    <string name="select_period">Select period to import</string>
-    <string name="start_date_format">Start date: %1$s</string>
-    <string name="end_date_format">End date: %1$s</string>
-    <string name="import_events">Import Events</string>
-    <string name="importing_events">Importing events…</string>
-    <string name="confirm">Confirm</string>
-    <string name="sync_with_calendar">Add as event to Google Calendar</string>
+    <!-- Calendar import related -->
+    <string name="import_calendar">Google Import Calendar</string>
+    <string name="import_calendar_events">Import Google Calendar Events</string>
+    <string name="import_days_range">Import events for the next %d days</string>
+    <string name="import_button">Import</string>
+    <string name="permission_required">Permission Required</string>
+    <string name="calendar_permission_explanation">Calendar permission is required to import calendar events.</string>
+    <string name="request_again">Request Again</string>
 </resources>

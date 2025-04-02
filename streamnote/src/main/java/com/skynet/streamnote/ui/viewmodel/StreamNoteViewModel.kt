@@ -3,13 +3,16 @@ package com.skynet.streamnote.ui.viewmodel
 import android.app.Application
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.provider.Settings
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.skynet.streamnote.data.AppDatabase
 import com.skynet.streamnote.data.entity.Memo
 import com.skynet.streamnote.data.entity.Theme
+import com.skynet.streamnote.data.repository.CalendarRepository
 import com.skynet.streamnote.data.repository.MemoRepository
 import com.skynet.streamnote.data.repository.ThemeRepository
 import com.skynet.streamnote.service.MemoOverlayService
@@ -119,5 +122,30 @@ class StreamNoteViewModel(application: Application) : AndroidViewModel(applicati
     // 기본 테마 수동 추가 함수
     fun insertDefaultThemes() = viewModelScope.launch {
         themeRepository.insertDefaultThemes()
+    }
+
+    private val calendarRepository: CalendarRepository = CalendarRepository(application)
+
+    // 캘린더 이벤트를 메모로 가져오는 함수
+    fun importCalendarEvents(daysRange: Int = 7) = viewModelScope.launch {
+        val calendarMemos = calendarRepository.getCalendarEvents(daysRange)
+
+        // 각 캘린더 이벤트를 메모로 저장
+        for (memo in calendarMemos) {
+            memoRepository.insertMemo(memo)
+        }
+    }
+
+    // 캘린더 권한 상태 확인
+    fun hasCalendarPermission(): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val readCalendarPermission = ContextCompat.checkSelfPermission(
+                getApplication(),
+                android.Manifest.permission.READ_CALENDAR
+            )
+            readCalendarPermission == PackageManager.PERMISSION_GRANTED
+        } else {
+            true
+        }
     }
 }

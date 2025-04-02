@@ -49,6 +49,17 @@ android {
         // Kotlin 2.0 이전 버전과 호환되는 Compose 컴파일러 버전 사용
         kotlinCompilerExtensionVersion = "1.5.8"
     }
+
+    packaging {
+        resources {
+            excludes += "META-INF/DEPENDENCIES"
+            excludes += "META-INF/LICENSE"
+            excludes += "META-INF/LICENSE.txt"
+            excludes += "META-INF/NOTICE"
+            excludes += "META-INF/NOTICE.txt"
+            excludes += "META-INF/*.kotlin_module"
+        }
+    }
 }
 
 composeCompiler {
@@ -61,7 +72,7 @@ dependencies {
     val composeBom = platform("androidx.compose:compose-bom:2023.10.01")
     implementation(composeBom)
 
-    // Room 의존성
+// Room 의존성
     val roomVersion = "2.6.1" // 최신 버전 사용
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion") // 코루틴 지원
@@ -79,23 +90,21 @@ dependencies {
 
     implementation("androidx.navigation:navigation-compose:2.7.6")
 
-    // Room 데이터베이스
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
-    annotationProcessor("androidx.room:room-compiler:2.6.1")
-
     // 코루틴
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     // 테스트 의존성
-    //testImplementation("junit:junit:4.13.2")
-    //androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    //androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    //androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
 
     implementation("com.google.android.material:material:1.9.0")
 
-    // AdMob 의존성 추가
+    // AdMob 의존성
     implementation("com.google.android.gms:play-services-ads:22.6.0")
+
+    // Google Calendar API 의존성
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation("com.google.api-client:google-api-client-android:2.2.0")
+    implementation("com.google.apis:google-api-services-calendar:v3-rev20231123-2.0.0")
+    implementation("com.google.auth:google-auth-library-oauth2-http:1.20.0")
+    implementation("com.google.http-client:google-http-client-gson:1.43.3")
 }

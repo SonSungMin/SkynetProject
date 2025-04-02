@@ -49,22 +49,12 @@
     <string name="position_top_short">上部</string>
     <string name="position_bottom_short">下部</string>
 
-    <!-- カレンダー関連 -->
-    <string name="calendar_permission_required">カレンダーへのアクセス権限が必要です</string>
-    <string name="request_permission">権限をリクエスト</string>
-    <string name="calendar_sync">カレンダー連携</string>
-    <string name="auto_sync_calendar">カレンダーのイベントを自動的にメモと同期</string>
-    <string name="sync_description">新しいメモはカレンダーにも追加されます</string>
-    <string name="import_calendar_events">カレンダーからイベントをインポート</string>
-    <string name="calendar_title">カレンダー</string>
-    <string name="selected_date_events">選択した日付のイベント</string>
-    <string name="no_events">イベントはありません。</string>
-    <string name="import_dialog_title">カレンダーからイベントをインポート</string>
-    <string name="select_period">インポートする期間を選択</string>
-    <string name="start_date_format">開始日: %1$s</string>
-    <string name="end_date_format">終了日: %1$s</string>
-    <string name="import_events">イベントをインポート</string>
-    <string name="importing_events">イベントをインポート中…</string>
-    <string name="confirm">確認</string>
-    <string name="sync_with_calendar">Googleカレンダーにイベントとして追加</string>
+    <!-- カレンダーのインポート関連 -->
+    <string name="import_calendar">Google カレンダーからインポート</string>
+    <string name="import_calendar_events">Googleカレンダーの予定をインポート</string>
+    <string name="import_days_range">今後%d日間の予定をインポート</string>
+    <string name="import_button">インポート</string>
+    <string name="permission_required">権限が必要です</string>
+    <string name="calendar_permission_explanation">カレンダーの予定をインポートするには、カレンダーへのアクセス権限が必要です。</string>
+    <string name="request_again">再度リクエスト</string>
 </resources>
