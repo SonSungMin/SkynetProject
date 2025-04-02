@@ -11,20 +11,22 @@
     <color name="purple_100">#E1BEE7</color>
     <color name="purple_900">#4A148C</color>
 
-    <color name="memo_list_background">#3F4862</color>
-    <color name="theme_settings_background">#E3F2FD</color>
+    <!-- 더 세련된 색상으로 변경 -->
+    <color name="memo_list_background">#1A1F36</color>
+    <color name="theme_settings_background">#F8FAFC</color>
 
-    <!-- 기능별 의미 있는 이름으로 변경된 색상 -->
-    <color name="primary">#3F4862</color>              <!-- 진한 회색 - 주요 색상 -->
-    <color name="secondary">#9CCDFF</color>            <!-- 연한 파란색 - 보조 색상 -->
-    <color name="background">#FFFFFF</color>           <!-- 연한 파란색 - 배경 색상 -->
-    <color name="surface">#FFFFFF</color>              <!-- 흰색 - 표면 색상 -->
-    <color name="surface_variant">#FFFFFF</color>      <!-- 연한 회색 - 대체 표면 색상 -->
-    <color name="on_primary">#FFFFFF</color>           <!-- 흰색 - 주요 색상 위 텍스트 -->
-    <color name="on_secondary">#333333</color>         <!-- 진한 텍스트 - 보조 색상 위 텍스트 -->
-    <color name="on_background">#333333</color>        <!-- 진한 텍스트 - 배경 위 텍스트 -->
-    <color name="on_surface">#333333</color>           <!-- 진한 텍스트 - 표면 위 텍스트 -->
-    <color name="on_surface_variant">#666666</color>   <!-- 중간 텍스트 - 대체 표면 위 텍스트 -->
-    <color name="outline">#CCCCCC</color>              <!-- 중간 회색 - 테두리 색상 -->
-    <color name="disabled">#AAAAAA</color>             <!-- 회색 - 비활성화 색상 -->
+    <!-- 기능별 의미 있는 이름으로 변경된 색상 (더 현대적인 색상) -->
+    <color name="primary">#2A2F45</color>             <!-- 네이비/차콜 - 주요 색상 -->
+    <color name="secondary">#4F566B</color>           <!-- 미드-다크 그레이 - 보조 색상 -->
+    <color name="background">#F7FAFC</color>          <!-- 연한 그레이 - 배경 색상 -->
+    <color name="surface">#FFFFFF</color>             <!-- 흰색 - 표면 색상 -->
+    <color name="surface_variant">#F1F5F9</color>     <!-- 연한 회색 - 대체 표면 색상 -->
+    <color name="on_primary">#FFFFFF</color>          <!-- 흰색 - 주요 색상 위 텍스트 -->
+    <color name="on_secondary">#FFFFFF</color>        <!-- 흰색 - 보조 색상 위 텍스트 -->
+    <color name="on_background">#1A1F36</color>       <!-- 진한 그레이/네이비 - 배경 위 텍스트 -->
+    <color name="on_surface">#1A1F36</color>          <!-- 진한 그레이/네이비 - 표면 위 텍스트 -->
+    <color name="on_surface_variant">#4F566B</color>  <!-- 중간 그레이 - 대체 표면 위 텍스트 -->
+    <color name="outline">#CBD5E0</color>             <!-- 중간 그레이 - 테두리 색상 -->
+    <color name="disabled">#A0AEC0</color>            <!-- 회색 - 비활성화 색상 -->
+    <color name="accent">#6772E5</color>              <!-- 밝은 퍼플-블루 - 강조 색상 -->
 </resources>

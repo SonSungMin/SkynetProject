@@ -33,6 +33,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import android.content.pm.PackageManager
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.ui.graphics.Color
 import com.skynet.streamnote.R
 import com.skynet.streamnote.data.entity.Memo
 import com.skynet.streamnote.ui.components.ImportCalendarDialog
@@ -72,7 +74,10 @@ fun MemoListScreen(viewModel: StreamNoteViewModel, modifier: Modifier = Modifier
                 modifier = Modifier.align(Alignment.Center)
             )
         } else {
-            LazyColumn {
+
+            LazyColumn(
+                contentPadding = PaddingValues(bottom = 100.dp)
+            ) {
                 items(memos) { memo ->
                     MemoItem(
                         memo = memo,
@@ -112,20 +117,46 @@ fun MemoListScreen(viewModel: StreamNoteViewModel, modifier: Modifier = Modifier
                         calendarPermissionLauncher.launch(Manifest.permission.READ_CALENDAR)
                     }
                 },
-                icon = { Icon(Icons.Default.DateRange, contentDescription = null) },
-                text = { Text(stringResource(R.string.import_calendar)) }
+                icon = {
+                    Icon(
+                        Icons.Default.DateRange,
+                        contentDescription = null,
+                        tint = colorResource(id = R.color.primary)
+                    )
+                },
+                text = {
+                    Text(
+                        stringResource(R.string.import_calendar),
+                        color = colorResource(id = R.color.primary)
+                    )
+                },
+                containerColor = Color.White,
+                contentColor = colorResource(id = R.color.primary)
             )
 
             Spacer(modifier = Modifier.width(16.dp))
 
-            // 메모 추가 FAB - FloatingActionButton에서 ExtendedFloatingActionButton으로 변경
+            // 메모 추가 FAB - 흰색 배경으로 변경
             ExtendedFloatingActionButton(
                 onClick = {
                     selectedMemo = null
                     showAddDialog = true
                 },
-                icon = { Icon(Icons.Default.Add, contentDescription = null) },
-                text = { Text(stringResource(R.string.new_memo)) }
+                icon = {
+                    Icon(
+                        Icons.Default.Add,
+                        contentDescription = null,
+                        tint = colorResource(id = R.color.primary)
+                    )
+                },
+                text = {
+                    Text(
+                        stringResource(R.string.new_memo),
+                        color = colorResource(id = R.color.primary)
+                    )
+                },
+                containerColor = Color.White,
+                contentColor = colorResource(id = R.color.primary)
             )
         }
     }

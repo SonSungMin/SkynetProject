@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
@@ -46,7 +48,8 @@ fun MemoItem(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(8.dp)
+            .heightIn(min = 80.dp, max = 200.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(
             containerColor = surfaceColor
@@ -62,7 +65,7 @@ fun MemoItem(
                     text = memo.content,
                     style = MaterialTheme.typography.bodyLarge,
                     color = onSurfaceColor,
-                    maxLines = 1,
+                    maxLines = 3,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.weight(1f)
                 )
@@ -108,7 +111,9 @@ fun MemoItem(
                             dateFormat.format(Date(end))
                         ),
                         style = MaterialTheme.typography.bodySmall,
-                        color = onSurfaceVariantColor
+                        color = onSurfaceVariantColor,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
                     )
                 }
             }

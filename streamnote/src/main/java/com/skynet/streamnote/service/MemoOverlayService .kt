@@ -1,8 +1,5 @@
 package com.skynet.streamnote.service
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -14,7 +11,10 @@ import android.graphics.PixelFormat
 import android.graphics.Typeface
 import android.os.Build
 import android.os.IBinder
+import android.os.Handler
+import android.os.Looper
 import android.provider.Settings
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -44,15 +44,17 @@ class MemoOverlayService : Service() {
     private var currentMemos: List<Memo> = emptyList()
     private var currentMemoIndex = 0
     private var currentTheme: Theme? = null
-    private var animation: ObjectAnimator? = null
+    private val handler = Handler(Looper.getMainLooper())
+    private var scrollAnimator: ValueAnimator? = null
 
     companion object {
         const val ACTION_UPDATE_THEME = "com.skynet.streamnote.ACTION_UPDATE_THEME"
         const val EXTRA_THEME_ID = "theme_id"
         const val NOTIFICATION_ID = 1001
+        private const val SCROLL_DURATION = 10000L // 스크롤 지속 시간
+        private const val PAUSE_DURATION = 3000L // 일시 정지 시간
     }
 
-    // 서비스가 시작될 때 전역 테마 ID 로드
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
@@ -62,93 +64,139 @@ class MemoOverlayService : Service() {
 
         // 활성화된 메모 가져오기
         CoroutineScope(Dispatchers.Main).launch {
-            memoRepository.getActiveMemos().collect { memos ->
-                currentMemos = memos
-                updateOverlayContent()
+            try {
+                memoRepository.getActiveMemos().collect { memos ->
+                    if (memos.isEmpty()) {
+                        updateNoMemoView()
+                    } else {
+                        // 메모 생성 시간 순으로 정렬
+                        currentMemos = memos.sortedByDescending { it.createdAt }
+
+                        // 첫 번째 메모부터 시작
+                        currentMemoIndex = 0
+
+                        // 초기 메모 표시
+                        updateOverlayContent()
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e("MemoOverlayService", "Error fetching memos", e)
+                updateNoMemoView()
             }
         }
 
         // 전역 테마 설정 로드
         val sharedPrefs = getSharedPreferences("streamnote_preferences", Context.MODE_PRIVATE)
-        val globalThemeId = sharedPrefs.getInt("global_theme_id", 1) // 기본값 1 (첫 번째 테마)
+        val globalThemeId = sharedPrefs.getInt("global_theme_id", 1)
 
         CoroutineScope(Dispatchers.Main).launch {
-            val theme = themeRepository.getThemeById(globalThemeId).first()
-            currentTheme = theme ?: themeRepository.getAllThemes().first().firstOrNull()
-            updateOverlayAppearance()
+            try {
+                val theme = themeRepository.getThemeById(globalThemeId).first()
+                currentTheme = theme ?: themeRepository.getAllThemes().first().firstOrNull()
+                updateOverlayAppearance()
+            } catch (e: Exception) {
+                Log.e("MemoOverlayService", "Error loading theme", e)
+            }
         }
 
         createOverlayView()
     }
 
-    private fun createOverlayView() {
-        // Inflate overlay layout
-        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        overlayView = inflater.inflate(R.layout.memo_overlay, null)
+    private fun updateNoMemoView() {
+        val textView = overlayView?.findViewById<TextView>(R.id.overlayTextView)
+        textView?.text = getString(R.string.no_memo_to_display)
 
-        // 오버레이 레이아웃 파라미터 설정
-        val params = WindowManager.LayoutParams(
-            WindowManager.LayoutParams.MATCH_PARENT,
-            WindowManager.LayoutParams.WRAP_CONTENT,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-            else
-                WindowManager.LayoutParams.TYPE_PHONE,
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
-                    WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or
-                    WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
-            PixelFormat.TRANSLUCENT
-        )
+        // 애니메이션 중지
+        stopScrolling()
+    }
 
-        // 현재 테마의 위치 설정 적용
-        params.gravity = if (currentTheme?.position == "TOP") Gravity.TOP else Gravity.BOTTOM
+    private fun stopScrolling() {
+        scrollAnimator?.cancel()
+        handler.removeCallbacksAndMessages(null)
 
-        // 여백 설정 적용
-        val marginTop = currentTheme?.marginTop ?: 0
-        val marginBottom = currentTheme?.marginBottom ?: 0
-        val marginHorizontal = currentTheme?.marginHorizontal ?: 0
-
-        // dp를 픽셀로 변환
-        val density = resources.displayMetrics.density
-        params.y = if (params.gravity == Gravity.TOP)
-            (marginTop * density).toInt()
-        else
-            (marginBottom * density).toInt()
-
-        params.x = (marginHorizontal * density).toInt()
-
-        // 창 관리자에 뷰 추가
-        windowManager?.addView(overlayView, params)
-
-        // 오버레이 컨테이너 스타일 적용
-        val container = overlayView?.findViewById<LinearLayout>(R.id.overlayContainer)
-
-        // 배경색 적용 (테마에서 가져오거나 기본값 사용)
-        val backgroundColor = currentTheme?.backgroundColor ?:
-        ContextCompat.getColor(this, R.color.primary) and 0x00FFFFFF or 0xC0000000.toInt()
-
-        container?.setBackgroundColor(backgroundColor)
-        container?.setPadding(
-            (marginHorizontal * density).toInt(),
-            0,
-            (marginHorizontal * density).toInt(),
-            0
-        )
-
-        startScrollingAnimation()
+        // 텍스트 뷰 위치 초기화
+        val textView = overlayView?.findViewById<TextView>(R.id.overlayTextView)
+        textView?.translationX = 0f
     }
 
     private fun updateOverlayContent() {
         if (currentMemos.isEmpty()) {
-            overlayView?.findViewById<TextView>(R.id.overlayTextView)?.text = getString(R.string.no_memo_to_display)
+            updateNoMemoView()
             return
         }
 
-        val textView = overlayView?.findViewById<TextView>(R.id.overlayTextView)
-        textView?.text = currentMemos[currentMemoIndex].content
+        // 기존 애니메이션 중지
+        stopScrolling()
 
-        // 다음 메모로 순환
-        currentMemoIndex = (currentMemoIndex + 1) % currentMemos.size
+        val textView = overlayView?.findViewById<TextView>(R.id.overlayTextView)
+
+        // 현재 인덱스의 메모 표시
+        textView?.apply {
+            // 최대 10줄까지 표시
+            maxLines = 10
+            text = currentMemos[currentMemoIndex].content
+        }
+
+        // 다음 메모 인덱스 준비
+        val nextIndex = (currentMemoIndex + 1) % currentMemos.size
+
+        // 텍스트 스크롤 시작
+        startScrollingAnimation {
+            // 애니메이션 완료 후 다음 메모로 이동
+            currentMemoIndex = nextIndex
+            updateOverlayContent()
+        }
+    }
+
+    private fun startScrollingAnimation(onAnimationComplete: (() -> Unit)? = null) {
+        val textView = overlayView?.findViewById<TextView>(R.id.overlayTextView) ?: return
+
+        textView.post {
+            val displayMetrics = resources.displayMetrics
+            val screenWidth = displayMetrics.widthPixels
+            val textWidth = textView.width
+
+            // 텍스트가 화면보다 짧으면 스크롤하지 않음
+            if (textWidth <= screenWidth) {
+                // 잠시 후 다음 메모로 넘어감
+                handler.postDelayed({
+                    onAnimationComplete?.invoke()
+                }, PAUSE_DURATION)
+                return@post
+            }
+
+            // 스크롤 애니메이터 생성
+            scrollAnimator = ValueAnimator.ofFloat(0f, (-(textWidth + screenWidth)).toFloat()).apply {
+                // 테마의 스크롤 속도 반영
+                val scrollSpeed = currentTheme?.scrollSpeed ?: 1f
+                duration = (SCROLL_DURATION / scrollSpeed).toLong()
+                interpolator = LinearInterpolator()
+
+                addUpdateListener { animator ->
+                    val value = animator.animatedValue as Float
+                    textView.translationX = value
+                }
+
+                addListener(object : android.animation.Animator.AnimatorListener {
+                    override fun onAnimationStart(animation: android.animation.Animator) {}
+
+                    override fun onAnimationEnd(animation: android.animation.Animator) {
+                        // 애니메이션 종료 후 잠시 대기
+                        handler.postDelayed({
+                            // 텍스트 위치 초기화
+                            textView.translationX = 0f
+                            // 다음 메모로 전환
+                            onAnimationComplete?.invoke()
+                        }, PAUSE_DURATION)
+                    }
+
+                    override fun onAnimationCancel(animation: android.animation.Animator) {}
+                    override fun onAnimationRepeat(animation: android.animation.Animator) {}
+                })
+
+                start()
+            }
+        }
     }
 
     private fun updateOverlayAppearance() {
@@ -180,9 +228,6 @@ class MemoOverlayService : Service() {
 
         // 위치 및 여백 적용
         updateOverlayPosition(theme)
-
-        // 테마 변경 시 애니메이션 다시 시작
-        startScrollingAnimation()
     }
 
     private fun updateOverlayPosition(theme: Theme) {
@@ -213,48 +258,67 @@ class MemoOverlayService : Service() {
         )
     }
 
-    private fun startScrollingAnimation() {
-        val textView = overlayView?.findViewById<TextView>(R.id.overlayTextView) ?: return
+    private fun createOverlayView() {
+        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        overlayView = inflater.inflate(R.layout.memo_overlay, null)
 
-        // 기존 애니메이션 중지
-        animation?.cancel()
+        val params = WindowManager.LayoutParams(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+            else
+                WindowManager.LayoutParams.TYPE_PHONE,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or
+                    WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
+            PixelFormat.TRANSLUCENT
+        )
 
-        // 화면 너비 계산
-        val displayMetrics = resources.displayMetrics
-        val screenWidth = displayMetrics.widthPixels
+        // 현재 테마의 위치 설정 적용
+        params.gravity = if (currentTheme?.position == "TOP") Gravity.TOP else Gravity.BOTTOM
 
-        // 애니메이션 속도 계산 (스크롤 속도가 높을수록 애니메이션 시간은 짧아져야 함)
-        val scrollSpeed = currentTheme?.scrollSpeed ?: 1f
-        val duration = (10000 / scrollSpeed).toLong()
+        // 여백 설정 적용
+        val marginTop = currentTheme?.marginTop ?: 0
+        val marginBottom = currentTheme?.marginBottom ?: 0
+        val marginHorizontal = currentTheme?.marginHorizontal ?: 0
 
-        // 텍스트 뷰의 너비 측정을 위해 처리
-        textView.post {
-            val textWidth = textView.width.toFloat()
+        // dp를 픽셀로 변환
+        val density = resources.displayMetrics.density
+        params.y = if (params.gravity == Gravity.TOP)
+            (marginTop * density).toInt()
+        else
+            (marginBottom * density).toInt()
 
-            // 애니메이션 설정 - 화면 오른쪽에서 왼쪽으로 이동
-            animation = ObjectAnimator.ofFloat(textView, "translationX", screenWidth.toFloat(), -textWidth).apply {
-                this.duration = duration
-                interpolator = LinearInterpolator()
-                // 무한반복 대신 한 번만 실행
-                repeatCount = 0
+        params.x = (marginHorizontal * density).toInt()
 
-                // 애니메이션이 끝나면 다음 메모로 넘어감
-                addListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator) {
-                        super.onAnimationEnd(animation)
-                        // 다음 메모로 넘어감
-                        updateOverlayContent()
-                        // 새 메모로 애니메이션 다시 시작
-                        startScrollingAnimation()
-                    }
-                })
-
-                start()
-            }
+        // 텍스트뷰 설정 변경
+        val textView = overlayView?.findViewById<TextView>(R.id.overlayTextView)
+        textView?.apply {
+            // 단일 라인 제한 해제
+            maxLines = Integer.MAX_VALUE
+            ellipsize = null
         }
+
+        // 창 관리자에 뷰 추가
+        windowManager?.addView(overlayView, params)
+
+        // 오버레이 컨테이너 스타일 적용
+        val container = overlayView?.findViewById<LinearLayout>(R.id.overlayContainer)
+
+        // 배경색 적용 (테마에서 가져오거나 기본값 사용)
+        val backgroundColor = currentTheme?.backgroundColor ?:
+        ContextCompat.getColor(this, R.color.primary) and 0x00FFFFFF or 0xC0000000.toInt()
+
+        container?.setBackgroundColor(backgroundColor)
+        container?.setPadding(
+            (marginHorizontal * density).toInt(),
+            0,
+            (marginHorizontal * density).toInt(),
+            0
+        )
     }
 
-    // 알림 채널 생성
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -270,7 +334,6 @@ class MemoOverlayService : Service() {
         }
     }
 
-    // 포그라운드 서비스 시작
     private fun startForeground() {
         val pendingIntent = PendingIntent.getActivity(
             this,
@@ -302,13 +365,15 @@ class MemoOverlayService : Service() {
                     val themeId = it.getIntExtra(EXTRA_THEME_ID, 0)
                     if (themeId > 0) {
                         CoroutineScope(Dispatchers.Main).launch {
-                            themeRepository.getThemeById(themeId).collect { theme ->
-                                if (theme != null) {
-                                    currentTheme = theme
-                                    updateOverlayAppearance()
-                                    // 테마 업데이트 시 애니메이션도 다시 시작
-                                    startScrollingAnimation()
+                            try {
+                                themeRepository.getThemeById(themeId).collect { theme ->
+                                    if (theme != null) {
+                                        currentTheme = theme
+                                        updateOverlayAppearance()
+                                    }
                                 }
+                            } catch (e: Exception) {
+                                Log.e("MemoOverlayService", "Error updating theme", e)
                             }
                         }
                     }
@@ -318,17 +383,26 @@ class MemoOverlayService : Service() {
 
         return START_STICKY
     }
+        override fun onBind(intent: Intent?): IBinder? {
+            return null
+        }
 
-    override fun onBind(intent: Intent?): IBinder? {
-        return null
-    }
+        override fun onDestroy() {
+            super.onDestroy()
+            // 모든 핸들러 메시지와 콜백 제거
+            handler.removeCallbacksAndMessages(null)
 
-    override fun onDestroy() {
-        super.onDestroy()
-        animation?.cancel()
-        if (windowManager != null && overlayView != null) {
-            windowManager?.removeView(overlayView)
-            overlayView = null
+            // 애니메이션 중지
+            scrollAnimator?.cancel()
+
+            // 오버레이 뷰 제거
+            if (windowManager != null && overlayView != null) {
+                try {
+                    windowManager?.removeView(overlayView)
+                } catch (e: Exception) {
+                    Log.e("MemoOverlayService", "Error removing overlay view", e)
+                }
+                overlayView = null
+            }
         }
     }
-}

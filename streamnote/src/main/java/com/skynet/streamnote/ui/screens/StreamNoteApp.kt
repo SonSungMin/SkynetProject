@@ -27,6 +27,26 @@ import androidx.compose.ui.unit.dp
 import com.skynet.streamnote.R
 import com.skynet.streamnote.ui.components.BannerAdView
 import com.skynet.streamnote.ui.viewmodel.StreamNoteViewModel
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.ui.res.colorResource
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,21 +58,28 @@ fun StreamNoteApp(viewModel: StreamNoteViewModel) {
     )
     val serviceRunning = remember { mutableStateOf(false) }
 
-    // 색상 정의
-    val selectedContainerColor = Color(0xFF3F4862)
-    val selectedIconColor = Color.White
-    val unselectedIconColor = Color.White.copy(alpha = 0.7f)
+    // 색상 정의 - 모던한 스타일로 변경
+    val selectedContainerColor = colorResource(id = R.color.primary)
+    val selectedIconColor = colorResource(id = R.color.on_primary)
+    val unselectedIconColor = colorResource(id = R.color.on_primary).copy(alpha = 0.7f)
 
     Scaffold(
         topBar = {
-            // 높이가 줄어든 TopAppBar
+            // 세련된 스타일의 TopAppBar
             TopAppBar(
                 title = {
                     Text(
                         text = stringResource(R.string.app_name),
-                        modifier = Modifier.padding(vertical = 4.dp)
+                        modifier = Modifier.padding(vertical = 4.dp),
+                        color = colorResource(id = R.color.on_primary),
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            fontWeight = FontWeight.Medium
+                        )
                     )
                 },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = colorResource(id = R.color.primary)
+                ),
                 actions = {
                     Switch(
                         checked = serviceRunning.value,
@@ -64,7 +91,13 @@ fun StreamNoteApp(viewModel: StreamNoteViewModel) {
                                 viewModel.stopOverlayService()
                             }
                         },
-                        modifier = Modifier.padding(vertical = 4.dp)
+                        modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
+                        colors = SwitchDefaults.colors(
+                            checkedThumbColor = colorResource(id = R.color.on_primary),
+                            checkedTrackColor = colorResource(id = R.color.accent),
+                            uncheckedThumbColor = colorResource(id = R.color.on_primary),
+                            uncheckedTrackColor = colorResource(id = R.color.secondary).copy(alpha = 0.5f)
+                        )
                     )
                 }
             )
@@ -74,8 +107,12 @@ fun StreamNoteApp(viewModel: StreamNoteViewModel) {
                 // 배너 광고 추가
                 BannerAdView()
 
-                // 기존 탭바
-                NavigationBar {
+                // 세련된 네비게이션 바 - 높이 줄이고 색상 대비 개선
+                NavigationBar(
+                    containerColor = colorResource(id = R.color.primary),
+                    tonalElevation = 0.dp,
+                    modifier = Modifier.height(80.dp) // 높이 줄임
+                ) {
                     tabs.forEachIndexed { index, title ->
                         NavigationBarItem(
                             icon = {
@@ -84,15 +121,21 @@ fun StreamNoteApp(viewModel: StreamNoteViewModel) {
                                     contentDescription = title
                                 )
                             },
-                            label = { Text(title) },
+                            label = {
+                                Text(
+                                    text = title,
+                                    style = MaterialTheme.typography.labelSmall, // 더 작은 폰트
+                                    fontWeight = if(selectedTab == index) FontWeight.Medium else FontWeight.Normal
+                                )
+                            },
                             selected = selectedTab == index,
                             onClick = { selectedTab = index },
                             colors = NavigationBarItemDefaults.colors(
-                                selectedIconColor = selectedIconColor,
-                                unselectedIconColor = unselectedIconColor,
-                                selectedTextColor = selectedIconColor,
-                                unselectedTextColor = unselectedIconColor,
-                                indicatorColor = selectedContainerColor
+                                selectedIconColor = Color.White, // 흰색으로 변경하여 대비 향상
+                                unselectedIconColor = Color.White.copy(alpha = 0.6f),
+                                selectedTextColor = Color.White, // 흰색으로 변경하여 대비 향상
+                                unselectedTextColor = Color.White.copy(alpha = 0.6f),
+                                indicatorColor = colorResource(id = R.color.accent) // 지시자 색상 변경
                             )
                         )
                     }

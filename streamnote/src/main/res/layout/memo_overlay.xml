@@ -5,7 +5,9 @@
     android:layout_height="wrap_content"
     android:background="#80000000"
     android:orientation="horizontal"
-    android:padding="4dp">
+    android:clipChildren="true"
+    android:clipToPadding="true"
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/overlayTextView"
@@ -14,6 +16,8 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:text="@string/overlay_content"
-        android:singleLine="true" />
+        android:maxLines="10"
+        android:ellipsize="end"
+        android:singleLine="false" />
 
 </LinearLayout>
